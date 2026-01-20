@@ -23,4 +23,156 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  background-image: url("/flowers/sunflowers.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: soft-light;
+}
+
+/* Hero & Loader Styles */
+.nav,
+.hero {
+  a,
+  p {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "DM Mono", monospace !important;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: #fff;
+  }
+}
+
+.nav {
+  position: fixed;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 1;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100svh;
+  background-color: var(--background);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  will-change: clip-path;
+  z-index: 0;
+}
+
+.hero-overlay .counter {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  color: #fff;
+}
+
+.counter h1 {
+  font-size: 8rem;
+  font-weight: 500;
+}
+
+.hero-images {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 10vw;
+  will-change: gap;
+}
+
+.hero-images img {
+  width: 10vw;
+  aspect-ratio: 5/7;
+  object-fit: cover;
+  opacity: 0;
+  transform: translateY(50%) scale(0.5);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  will-change: opacity, transform, clip-path;
+}
+
+.hero-header {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  z-index: -1;
+}
+
+.hero-header h1 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 15vw;
+  font-weight: 500;
+  line-height: 0.85;
+}
+
+.hero-header h1 .char {
+  will-change: transform;
+}
+
+.overlay-text-container {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  height: 2rem;
+  overflow: hidden;
+}
+
+.overlay-text {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(2rem);
+  will-change: transform;
+}
+
+.overlay-text p {
+  color: #fff;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+@media (width < 1000px) {
+  nav {
+    padding: 1rem;
+  }
+
+  .hero-overlay .counter {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .hero-images {
+    padding: 0 0.5rem;
+    gap: 2.5vw;
+  }
+
+  .hero-images img {
+    width: 25vw;
+  }
+
+  .hero-images img:nth-child(1),
+  .hero-images img:nth-child(5) {
+    display: none;
+  }
 }
