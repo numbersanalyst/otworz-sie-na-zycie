@@ -1,9 +1,11 @@
-import { LoaderHero } from "@/components/Loader";
+import { Loader } from "@/components/Loader";
+import { WindowOpeningHero } from "@/components/WindowOpeningHero";
 
 export default function Home() {
   return (
     <>
-      <LoaderHero />
+      <Loader />
+      <WindowOpeningHero />
 
       <section className="h-screen flex flex-col justify-center items-center text-center px-10">
         <h1 className="text-6xl font-serif font-light mb-6">
