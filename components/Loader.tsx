@@ -70,7 +70,7 @@ export const Loader = ({ onComplete }: LoaderProps) => {
     >
       <div
         ref={textRef}
-        className="text-4xl md:text-6xl font-serif font-light text-white invisible"
+        className="text-2xl sm:text-4xl md:text-6xl font-serif font-light text-white invisible whitespace-nowrap px-4"
       >
         {text.split("").map((char, i) => (
           <span key={i} className="char inline-block">
