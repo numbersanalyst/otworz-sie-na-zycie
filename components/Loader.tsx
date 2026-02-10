@@ -12,7 +12,7 @@ export const Loader = ({ onComplete }: LoaderProps) => {
   const textRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
 
-  const text = "Otwórz się na to co piękne";
+  const text = "Otwórz się, na to co piękne";
 
   useEffect(() => {
     if (!textRef.current || !containerRef.current) return;
