@@ -359,7 +359,7 @@ export const WindowOpeningHero = () => {
             </p>
             <div className="flex flex-col gap-y-5 md:gap-y-10">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light">
-                To co najpiękniejsze <br /> jest w nas
+                To co piękne <br /> jest w nas
               </h1>
 
               <hr />
