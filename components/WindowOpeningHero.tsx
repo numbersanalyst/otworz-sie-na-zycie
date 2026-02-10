@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 
-import heroImage from "@/public/sky-full.webp";
+import heroImage from "@/public/sky_full.webp";
 import windowFrameImage from "@/public/window_frame.webp";
 import windowLeftImage from "@/public/window_left.webp";
 import windowRightImage from "@/public/window_right.webp";
@@ -25,6 +25,9 @@ export const WindowOpeningHero = () => {
   const windowRightRef = useRef<HTMLDivElement>(null);
   const heroHeaderRef = useRef<HTMLDivElement>(null);
   const heroCopyRef = useRef<HTMLDivElement>(null);
+  const introWord1Ref = useRef<HTMLDivElement>(null);
+  const introWord2Ref = useRef<HTMLDivElement>(null);
+  const introWord3Ref = useRef<HTMLDivElement>(null);
 
   useLenis(() => ScrollTrigger.update());
 
@@ -37,7 +40,10 @@ export const WindowOpeningHero = () => {
       !windowLeftRef.current ||
       !windowRightRef.current ||
       !heroHeaderRef.current ||
-      !heroCopyRef.current
+      !heroCopyRef.current ||
+      !introWord1Ref.current ||
+      !introWord2Ref.current ||
+      !introWord3Ref.current
     ) {
       return;
     }
@@ -49,10 +55,19 @@ export const WindowOpeningHero = () => {
     const clouds = cloudsRef.current;
     const heroHeader = heroHeaderRef.current;
     const heroCopy = heroCopyRef.current;
+    const introWord1 = introWord1Ref.current;
+    const introWord2 = introWord2Ref.current;
+    const introWord3 = introWord3Ref.current;
 
     const skyMoveDistance = skyContainer.offsetHeight - window.innerHeight;
 
     gsap.set(heroCopy, { yPercent: 100 });
+
+    gsap.set([introWord1, introWord2, introWord3], {
+      opacity: 0,
+      y: 30,
+      filter: "blur(10px)",
+    });
 
     const cloudMarqueeTween = gsap.to(clouds, {
       xPercent: -50,
@@ -70,6 +85,55 @@ export const WindowOpeningHero = () => {
       scrub: 1,
       onUpdate: (self) => {
         const progress = self.progress;
+
+        if (progress <= 0.2) {
+          const introProgress = progress / 0.2;
+
+          if (introProgress <= 0.33) {
+            const word1Progress = introProgress / 0.33;
+            gsap.set(introWord1, {
+              opacity:
+                word1Progress < 0.7
+                  ? word1Progress / 0.7
+                  : 1 - (word1Progress - 0.7) / 0.3,
+              y: 30 - word1Progress * 30,
+              filter: `blur(${10 - word1Progress * 10}px)`,
+            });
+          } else {
+            gsap.set(introWord1, { opacity: 0 });
+          }
+
+          if (introProgress > 0.23 && introProgress <= 0.66) {
+            const word2Progress = (introProgress - 0.23) / 0.43;
+            gsap.set(introWord2, {
+              opacity:
+                word2Progress < 0.7
+                  ? word2Progress / 0.7
+                  : 1 - (word2Progress - 0.7) / 0.3,
+              y: 30 - word2Progress * 30,
+              filter: `blur(${10 - word2Progress * 10}px)`,
+            });
+          } else {
+            gsap.set(introWord2, { opacity: 0 });
+          }
+
+          if (introProgress > 0.56) {
+            const word3Progress = (introProgress - 0.56) / 0.44;
+            gsap.set(introWord3, {
+              opacity:
+                word3Progress < 0.7
+                  ? word3Progress / 0.7
+                  : 1 - (word3Progress - 0.7) / 0.3,
+              y: 30 - word3Progress * 30,
+              filter: `blur(${10 - word3Progress * 10}px)`,
+            });
+          } else {
+            gsap.set(introWord3, { opacity: 0 });
+          }
+        } else {
+          gsap.set([introWord1, introWord2, introWord3], { opacity: 0 });
+        }
+
         const windowScale = progress <= 0.5 ? 1 + (progress / 0.5) * 4 : 5;
 
         gsap.set(windowContainer, { scale: windowScale });
@@ -110,8 +174,6 @@ export const WindowOpeningHero = () => {
         let cloudYPercent = 0;
         let cloudOpacity = 1;
 
-        // Start moving clouds UP as window opens (exit animation)
-        // Adjust start point (0.1) and speed (150) as needed
         if (progress > 0.1) {
           cloudYPercent = -(progress - 0.1) * 150;
           cloudOpacity = Math.max(0, 1 - (progress - 0.1) * 2);
@@ -120,7 +182,6 @@ export const WindowOpeningHero = () => {
         gsap.set(clouds, {
           yPercent: cloudYPercent,
           opacity: cloudOpacity,
-          // No scale or pixel-y manipulation here, just pure percent-based move
         });
 
         const heroCopyY =
@@ -161,6 +222,42 @@ export const WindowOpeningHero = () => {
         </div>
 
         <div
+          ref={introWord1Ref}
+          className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
+        >
+          <h2
+            className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
+            style={{ marginLeft: "-5%" }}
+          >
+            Miłość
+          </h2>
+        </div>
+
+        <div
+          ref={introWord2Ref}
+          className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
+        >
+          <h2
+            className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
+            style={{ marginRight: "-8%" }}
+          >
+            Przyszłość
+          </h2>
+        </div>
+
+        <div
+          ref={introWord3Ref}
+          className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
+        >
+          <h2
+            className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
+            style={{ marginLeft: "6%" }}
+          >
+            Nadzieja
+          </h2>
+        </div>
+
+        <div
           ref={heroCopyRef}
           className="absolute top-0 left-0 w-full will-change-transform h-screen flex items-center justify-center z-30"
         >
@@ -173,7 +270,6 @@ export const WindowOpeningHero = () => {
           ref={cloudsRef}
           className="absolute top-1/4 left-0 w-[800%] md:w-[300%] h-[60vh] z-10 flex flex-row pointer-events-none"
         >
-          {/* First Cloud Image */}
           <div className="w-full h-full relative flex justify-center items-start">
             <Image
               className="w-full h-full object-contain object-top drop-shadow-xl scale-200"
@@ -184,7 +280,6 @@ export const WindowOpeningHero = () => {
               priority
             />
           </div>
-          {/* Duplicate Cloud Image for Seamless Loop */}
           <div className="w-full h-full relative flex justify-center items-start">
             <Image
               className="w-full h-full object-contain object-top drop-shadow-xl scale-200"
@@ -243,19 +338,17 @@ export const WindowOpeningHero = () => {
 
         <div
           ref={heroHeaderRef}
-          className="absolute top-0 left-0 w-full will-change-transform h-screen flex md:flex-row flex-col items-center md:justify-center justify-between p-6 md:p-14 transform-3d z-30"
+          className="absolute top-0 left-0 w-full will-change-transform h-screen flex md:flex-row flex-col lg:gap-5 items-center md:justify-center justify-between p-6 md:p-12 lg:p-24 transform-3d z-30"
         >
           <div className="md:flex-1 flex flex-col md:h-full justify-between">
-            <h1 className="text-5xl md:text-6xl font-serif font-light">
+            <h1 className="text-5xl lg:text-6xl font-serif font-light">
               Życie to
               <br /> najpiękniejszy dar
             </h1>
-            <p className="text-xl lg:text-2xl font-serif font-light md:block hidden">
+            <p className="text-2xl font-serif font-light max-w-xl md:block hidden">
               Każdy dzień jest zaproszeniem, by ten dar rozwijać, chronić i
               dzielić się nim z innymi. Choć bywa trudne i pełne prób, niesie w
-              sobie sens i nadzieję. W życiu uczymy się miłości,
-              odpowiedzialności i wiary. Dlatego warto przeżywać je świadomie, z
-              wdzięcznością i szacunkiem dla każdego człowieka.
+              sobie sens i nadzieję.
             </p>
           </div>
 
@@ -265,7 +358,7 @@ export const WindowOpeningHero = () => {
               <br /> prosto od Boga
             </p>
             <div className="flex flex-col gap-y-5 md:gap-y-10">
-              <h1 className="text-4xl md:text-6xl font-serif font-light">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light">
                 To co najpiękniejsze <br /> jest w nas
               </h1>
 
