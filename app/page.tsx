@@ -4,16 +4,20 @@ import { ReadMore } from "@/components/ReadMore";
 import { SupportSection } from "@/components/SupportSection";
 import { ContrastSection } from "@/components/ContrastSection";
 import { ConsequencesSection } from "@/components/ConsequencesSection";
+import { Ending } from "@/components/Ending";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
-      <Loader />
+      {/* <Loader /> */}
       <WindowOpeningHero />
       <ContrastSection />
       <ConsequencesSection />
       <SupportSection />
       <ReadMore />
+      <Ending />
+      <Footer />
     </>
   );
 }
