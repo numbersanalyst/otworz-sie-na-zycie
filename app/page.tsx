@@ -1,11 +1,12 @@
 import { Loader } from "@/components/Loader";
 import { WindowOpeningHero } from "@/components/WindowOpeningHero";
 import { ReadMore } from "@/components/ReadMore";
+import { SupportSection } from "@/components/SupportSection";
 
 export default function Home() {
   return (
     <>
-      {/* <Loader /> */}
+      <Loader />
       <WindowOpeningHero />
 
       <section className="h-screen flex flex-col justify-center items-center text-center px-10">
@@ -16,6 +17,8 @@ export default function Home() {
           Poznaj historię godności, która zaczyna się zanim świat ją usłyszy.
         </p>
       </section>
+
+      <SupportSection />
       <ReadMore />
     </>
   );
