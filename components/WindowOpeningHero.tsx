@@ -76,292 +76,285 @@ export const WindowOpeningHero = () => {
   useLenis(() => ScrollTrigger.update());
 
   useLayoutEffect(() => {
-    if (
-      windowWidth === 0 ||
-      !heroRef.current ||
-      !skyContainerRef.current ||
-      !cloudsRef.current ||
-      !windowContainerRef.current ||
-      !windowLeftRef.current ||
-      !windowRightRef.current ||
-      !heroHeaderRef.current ||
-      !heroCopyRef.current ||
-      !heroCopyInnerRef.current ||
-      !introWord1Ref.current ||
-      !introWord2Ref.current ||
-      !introWord3Ref.current ||
-      !introTextRef.current
-    ) {
-      return;
-    }
+    const ctx = gsap.context(() => {
+      const skyContainer = skyContainerRef.current!;
+      const windowContainer = windowContainerRef.current!;
+      const windowLeft = windowLeftRef.current!;
+      const windowRight = windowRightRef.current!;
+      const clouds = cloudsRef.current!;
+      const heroHeader = heroHeaderRef.current!;
+      const heroCopy = heroCopyRef.current!;
+      const heroCopyInner = heroCopyInnerRef.current!;
 
-    const skyContainer = skyContainerRef.current;
-    const windowContainer = windowContainerRef.current;
-    const windowLeft = windowLeftRef.current;
-    const windowRight = windowRightRef.current;
-    const clouds = cloudsRef.current;
-    const heroHeader = heroHeaderRef.current;
-    const heroCopy = heroCopyRef.current;
-    const heroCopyInner = heroCopyInnerRef.current;
+      const introWord1 = introWord1Ref.current!;
+      const introWord2 = introWord2Ref.current!;
+      const introWord3 = introWord3Ref.current!;
+      const introText = introTextRef.current!;
+      const quoteWords = quoteWordsRef.current!;
 
-    const introWord1 = introWord1Ref.current;
-    const introWord2 = introWord2Ref.current;
-    const introWord3 = introWord3Ref.current;
-    const introText = introTextRef.current;
-    const quoteWords = quoteWordsRef.current;
+      const isMobile = window.innerWidth < 768;
 
-    const isMobile = windowWidth < 768;
+      const pinDistance = isMobile
+        ? window.innerHeight * 8.5
+        : window.innerHeight * 2.5;
 
-    const pinDistance = isMobile
-      ? window.innerHeight * 8.5
-      : window.innerHeight * 2.5;
+      const quoteStart = isMobile ? 0.45 : 0.5;
+      const quoteRange = isMobile ? 0.55 : 0.45;
 
-    const quoteStart = isMobile ? 0.45 : 0.5;
-    const quoteRange = isMobile ? 0.55 : 0.45;
+      const skyMoveDistance = skyContainer.offsetHeight - window.innerHeight;
 
-    const skyMoveDistance = skyContainer.offsetHeight - window.innerHeight;
-
-    // Reset ustawień początkowych
-    gsap.set(heroCopy, {
-      opacity: isMobile ? 1 : 0,
-      visibility: isMobile ? "visible" : "hidden",
-      y: isMobile ? window.innerHeight : 0,
-    });
-
-    gsap.set([introWord1, introWord2, introWord3], {
-      opacity: 0,
-      y: 30,
-      filter: "blur(10px)",
-    });
-
-    gsap.set(introText, {
-      opacity: 0,
-      y: 30,
-      filter: "blur(10px)",
-    });
-
-    quoteWords.forEach((word) => {
-      gsap.set(word, {
-        color: isMobile ? "rgba(30, 41, 59, 0.95)" : "#ffffff",
-        opacity: 1,
+      // Reset ustawień początkowych
+      gsap.set(heroCopy, {
+        opacity: isMobile ? 1 : 0,
+        visibility: isMobile ? "visible" : "hidden",
+        y: isMobile ? window.innerHeight : 0,
       });
-    });
 
-    const cloudMarqueeTween = gsap.to(clouds, {
-      xPercent: -50,
-      ease: "none",
-      duration: 20,
-      repeat: -1,
-    });
+      gsap.set([introWord1, introWord2, introWord3], {
+        opacity: 0,
+        y: 30,
+        filter: "blur(10px)",
+      });
 
-    const contentHeight = heroCopyInner.offsetHeight;
-    const endPositionMobile = -contentHeight + window.innerHeight - 100;
+      gsap.set(introText, {
+        opacity: 0,
+        y: 30,
+        filter: "blur(10px)",
+      });
 
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: heroRef.current,
-      start: "top top",
-      end: `+=${pinDistance}px`,
-      pin: true,
-      pinSpacing: true,
-      scrub: 1,
-      onUpdate: (self: any) => {
-        const progress = self.progress;
-        const isMobileUpdate = window.innerWidth < 768;
-
-        if (progress <= 0.2) {
-          const introProgress = progress / 0.2;
-          // Word 1
-          const word1Progress = Math.min(1, Math.max(0, introProgress / 0.33));
-          const w1Opacity =
-            word1Progress < 0.7
-              ? word1Progress / 0.7
-              : 1 - (word1Progress - 0.7) / 0.3;
-          gsap.set(introWord1, {
-            opacity: w1Opacity,
-            y: 30 - word1Progress * 30,
-            filter: isMobileUpdate
-              ? "none"
-              : `blur(${10 - word1Progress * 10}px)`,
-          });
-          // Word 2
-          if (introProgress > 0.23) {
-            const word2Progress = Math.min(1, (introProgress - 0.23) / 0.43);
-            const w2Opacity =
-              word2Progress < 0.7
-                ? word2Progress / 0.7
-                : 1 - (word2Progress - 0.7) / 0.3;
-            gsap.set(introWord2, {
-              opacity: w2Opacity,
-              y: 30 - word2Progress * 30,
-              filter: isMobileUpdate
-                ? "none"
-                : `blur(${10 - word2Progress * 10}px)`,
-            });
-          } else {
-            gsap.set(introWord2, { opacity: 0 });
-          }
-          // Word 3
-          if (introProgress > 0.56) {
-            const word3Progress = (introProgress - 0.56) / 0.44;
-            const w3Opacity =
-              word3Progress < 0.7
-                ? word3Progress / 0.7
-                : 1 - (word3Progress - 0.7) / 0.3;
-            gsap.set(introWord3, {
-              opacity: w3Opacity,
-              y: 30 - word3Progress * 30,
-              filter: isMobileUpdate
-                ? "none"
-                : `blur(${10 - word3Progress * 10}px)`,
-            });
-          } else {
-            gsap.set(introWord3, { opacity: 0 });
-          }
-        } else {
-          gsap.set([introWord1, introWord2, introWord3], { opacity: 0 });
-        }
-
-        // --- 2. INTRO TEXT ---
-        if (progress > 0.2 && progress <= 0.45) {
-          const introTextProgress = (progress - 0.2) / 0.25;
-          const introTextOpacity =
-            introTextProgress < 0.7
-              ? introTextProgress / 0.7
-              : 1 - (introTextProgress - 0.7) / 0.3;
-          gsap.set(introText, {
-            opacity: introTextOpacity,
-            y: 30 - introTextProgress * 30,
-            filter: isMobileUpdate
-              ? "none"
-              : `blur(${Math.max(0, 10 - introTextProgress * 15)}px)`,
-          });
-        } else {
-          gsap.set(introText, { opacity: 0 });
-        }
-
-        // --- 3. WINDOW OPENING ---
-        const windowScale = progress <= 0.5 ? 1 + (progress / 0.5) * 4 : 5;
-        gsap.set(windowContainer, { scale: windowScale });
-        gsap.set(heroHeader, {
-          scale: windowScale + progress * 1.5,
-          z: progress * 500,
-          visibility: progress <= 0.66 ? "visible" : "hidden",
+      quoteWords.forEach((word) => {
+        gsap.set(word, {
+          color: isMobile ? "rgba(30, 41, 59, 0.95)" : "#ffffff",
+          opacity: 1,
         });
+      });
 
-        const wingProgress = Math.min(progress / 0.5, 1);
-        const wingScaleX = 1 + wingProgress;
-        const wingOpacity = Math.max(0, 1 - wingProgress * 2.5);
+      const cloudMarqueeTween = gsap.to(clouds, {
+        xPercent: -50,
+        ease: "none",
+        duration: 20,
+        repeat: -1,
+      });
 
-        gsap.set(windowLeft, {
-          scaleX: windowScale - progress * 3 * wingScaleX,
-          scaleY: windowScale - progress * 0.5,
-          x: -progress * 900,
-          y: progress * 25,
-          rotation: -progress * 5,
-          rotateX: -progress * 10,
-          opacity: wingOpacity,
-          transformOrigin: "center center",
-        });
+      const contentHeight = heroCopyInner.offsetHeight;
+      const endPositionMobile = -contentHeight + window.innerHeight - 100;
 
-        gsap.set(windowRight, {
-          scaleX: windowScale - progress * 3 * wingScaleX,
-          scaleY: windowScale - progress * 0.5,
-          x: progress * 900,
-          y: progress * 25,
-          rotation: progress * 5,
-          rotateX: -progress * 10,
-          opacity: wingOpacity,
-          transformOrigin: "center center",
-        });
+      ScrollTrigger.create({
+        refreshPriority: 1,
+        trigger: heroRef.current,
+        start: "top top",
+        end: `+=${pinDistance}px`,
+        pin: true,
+        pinSpacing: true,
+        scrub: 1,
+        onUpdate: (self: any) => {
+          const progress = self.progress;
+          const isMobileUpdate = window.innerWidth < 768;
 
-        gsap.set(skyContainer, { y: -progress * skyMoveDistance });
-
-        let cloudYPercent = 0;
-        let cloudOpacity = 1;
-        if (progress > 0.1) {
-          cloudYPercent = -(progress - 0.1) * 150;
-          cloudOpacity = Math.max(0, 1 - (progress - 0.1) * 2);
-        }
-        gsap.set(clouds, {
-          yPercent: cloudYPercent,
-          opacity: cloudOpacity,
-        });
-
-        // --- 4. HERO COPY ---
-        if (progress > quoteStart) {
-          if (isMobileUpdate) {
-            // Mobile logic
-            const scrollRange = 1.0 - quoteStart;
-            const scrollProgress = (progress - quoteStart) / scrollRange;
-            const currentY =
-              window.innerHeight +
-              scrollProgress * (endPositionMobile - window.innerHeight);
-
-            gsap.set(heroCopy, {
-              visibility: "visible",
-              opacity: 1,
-              y: currentY,
-            });
-            quoteWords.forEach((word) => {
-              gsap.set(word, { color: "rgba(30, 41, 59, 0.95)", opacity: 1 });
-            });
-          } else {
-            // Desktop logic
-            const qProgress = Math.min(
+          if (progress <= 0.2) {
+            const introProgress = progress / 0.2;
+            // Word 1
+            const word1Progress = Math.min(
               1,
-              Math.max(0, (progress - quoteStart) / quoteRange),
+              Math.max(0, introProgress / 0.33),
             );
-            const translateY = (0.5 - qProgress) * window.innerHeight * 1.2;
-
-            gsap.set(heroCopy, {
-              y: translateY,
-              opacity: qProgress < 0.1 ? qProgress / 0.1 : 1,
-              visibility: "visible",
+            const w1Opacity =
+              word1Progress < 0.7
+                ? word1Progress / 0.7
+                : 1 - (word1Progress - 0.7) / 0.3;
+            gsap.set(introWord1, {
+              opacity: w1Opacity,
+              y: 30 - word1Progress * 30,
+              filter: isMobileUpdate
+                ? "none"
+                : `blur(${10 - word1Progress * 10}px)`,
             });
+            // Word 2
+            if (introProgress > 0.23) {
+              const word2Progress = Math.min(1, (introProgress - 0.23) / 0.43);
+              const w2Opacity =
+                word2Progress < 0.7
+                  ? word2Progress / 0.7
+                  : 1 - (word2Progress - 0.7) / 0.3;
+              gsap.set(introWord2, {
+                opacity: w2Opacity,
+                y: 30 - word2Progress * 30,
+                filter: isMobileUpdate
+                  ? "none"
+                  : `blur(${10 - word2Progress * 10}px)`,
+              });
+            } else {
+              gsap.set(introWord2, { opacity: 0 });
+            }
+            // Word 3
+            if (introProgress > 0.56) {
+              const word3Progress = (introProgress - 0.56) / 0.44;
+              const w3Opacity =
+                word3Progress < 0.7
+                  ? word3Progress / 0.7
+                  : 1 - (word3Progress - 0.7) / 0.3;
+              gsap.set(introWord3, {
+                opacity: w3Opacity,
+                y: 30 - word3Progress * 30,
+                filter: isMobileUpdate
+                  ? "none"
+                  : `blur(${10 - word3Progress * 10}px)`,
+              });
+            } else {
+              gsap.set(introWord3, { opacity: 0 });
+            }
+          } else {
+            gsap.set([introWord1, introWord2, introWord3], { opacity: 0 });
+          }
 
-            quoteWords.forEach((word, index) => {
-              const wordStart = index / quoteWords.length;
-              const wordEnd = (index + 1) / quoteWords.length;
-              const slate800 = { r: 30, g: 41, b: 59 };
-              const white = { r: 255, g: 255, b: 255 };
+          // --- 2. INTRO TEXT ---
+          if (progress > 0.2 && progress <= 0.45) {
+            const introTextProgress = (progress - 0.2) / 0.25;
+            const introTextOpacity =
+              introTextProgress < 0.7
+                ? introTextProgress / 0.7
+                : 1 - (introTextProgress - 0.7) / 0.3;
+            gsap.set(introText, {
+              opacity: introTextOpacity,
+              y: 30 - introTextProgress * 30,
+              filter: isMobileUpdate
+                ? "none"
+                : `blur(${Math.max(0, 10 - introTextProgress * 15)}px)`,
+            });
+          } else {
+            gsap.set(introText, { opacity: 0 });
+          }
 
-              if (qProgress >= wordEnd) {
-                gsap.set(word, { color: "rgba(30, 41, 59, 0.9)", opacity: 1 });
-              } else if (qProgress >= wordStart) {
-                const wordProgress =
-                  (qProgress - wordStart) / (wordEnd - wordStart);
-                const r = Math.round(
-                  white.r + (slate800.r - white.r) * wordProgress,
-                );
-                const g = Math.round(
-                  white.g + (slate800.g - white.g) * wordProgress,
-                );
-                const b = Math.round(
-                  white.b + (slate800.b - white.b) * wordProgress,
-                );
-                const a = 1 - (1 - 0.9) * wordProgress;
+          // --- 3. WINDOW OPENING ---
+          const windowScale = progress <= 0.5 ? 1 + (progress / 0.5) * 4 : 5;
+          gsap.set(windowContainer, { scale: windowScale });
+          gsap.set(heroHeader, {
+            scale: windowScale + progress * 1.5,
+            z: progress * 500,
+            visibility: progress <= 0.66 ? "visible" : "hidden",
+          });
+
+          const wingProgress = Math.min(progress / 0.5, 1);
+          const wingScaleX = 1 + wingProgress;
+          const wingOpacity = Math.max(0, 1 - wingProgress * 2.5);
+
+          gsap.set(windowLeft, {
+            scaleX: windowScale - progress * 3 * wingScaleX,
+            scaleY: windowScale - progress * 0.5,
+            x: -progress * 900,
+            y: progress * 25,
+            rotation: -progress * 5,
+            rotateX: -progress * 10,
+            opacity: wingOpacity,
+            transformOrigin: "center center",
+          });
+
+          gsap.set(windowRight, {
+            scaleX: windowScale - progress * 3 * wingScaleX,
+            scaleY: windowScale - progress * 0.5,
+            x: progress * 900,
+            y: progress * 25,
+            rotation: progress * 5,
+            rotateX: -progress * 10,
+            opacity: wingOpacity,
+            transformOrigin: "center center",
+          });
+
+          gsap.set(skyContainer, { y: -progress * skyMoveDistance });
+
+          let cloudYPercent = 0;
+          let cloudOpacity = 1;
+          if (progress > 0.1) {
+            cloudYPercent = -(progress - 0.1) * 150;
+            cloudOpacity = Math.max(0, 1 - (progress - 0.1) * 2);
+          }
+          gsap.set(clouds, {
+            yPercent: cloudYPercent,
+            opacity: cloudOpacity,
+          });
+
+          // --- 4. HERO COPY ---
+          if (progress > quoteStart) {
+            if (isMobileUpdate) {
+              // Mobile logic
+              const scrollRange = 1.0 - quoteStart;
+              const scrollProgress = (progress - quoteStart) / scrollRange;
+              const currentY =
+                window.innerHeight +
+                scrollProgress * (endPositionMobile - window.innerHeight);
+
+              gsap.set(heroCopy, {
+                visibility: "visible",
+                opacity: 1,
+                y: currentY,
+              });
+              quoteWords.forEach((word) => {
                 gsap.set(word, {
-                  color: `rgba(${r}, ${g}, ${b}, ${a})`,
+                  color: "rgba(30, 41, 59, 0.95)",
                   opacity: 1,
                 });
-              } else {
-                gsap.set(word, { color: "#ffffff", opacity: 1 });
-              }
+              });
+            } else {
+              // Desktop logic
+              const qProgress = Math.min(
+                1,
+                Math.max(0, (progress - quoteStart) / quoteRange),
+              );
+              const translateY = (0.5 - qProgress) * window.innerHeight * 1.2;
+
+              gsap.set(heroCopy, {
+                y: translateY,
+                opacity: qProgress < 0.1 ? qProgress / 0.1 : 1,
+                visibility: "visible",
+              });
+
+              quoteWords.forEach((word, index) => {
+                const wordStart = index / quoteWords.length;
+                const wordEnd = (index + 1) / quoteWords.length;
+                const slate800 = { r: 30, g: 41, b: 59 };
+                const white = { r: 255, g: 255, b: 255 };
+
+                if (qProgress >= wordEnd) {
+                  gsap.set(word, {
+                    color: "rgba(30, 41, 59, 0.9)",
+                    opacity: 1,
+                  });
+                } else if (qProgress >= wordStart) {
+                  const wordProgress =
+                    (qProgress - wordStart) / (wordEnd - wordStart);
+                  const r = Math.round(
+                    white.r + (slate800.r - white.r) * wordProgress,
+                  );
+                  const g = Math.round(
+                    white.g + (slate800.g - white.g) * wordProgress,
+                  );
+                  const b = Math.round(
+                    white.b + (slate800.b - white.b) * wordProgress,
+                  );
+                  const a = 1 - (1 - 0.9) * wordProgress;
+                  gsap.set(word, {
+                    color: `rgba(${r}, ${g}, ${b}, ${a})`,
+                    opacity: 1,
+                  });
+                } else {
+                  gsap.set(word, { color: "#ffffff", opacity: 1 });
+                }
+              });
+            }
+          } else {
+            gsap.set(heroCopy, {
+              visibility: isMobileUpdate ? "visible" : "hidden",
+              y: isMobileUpdate ? window.innerHeight : 0,
+              opacity: isMobileUpdate ? 1 : 0,
             });
           }
-        } else {
-          gsap.set(heroCopy, {
-            visibility: isMobileUpdate ? "visible" : "hidden",
-            y: isMobileUpdate ? window.innerHeight : 0,
-            opacity: isMobileUpdate ? 1 : 0,
-          });
-        }
-      },
-    });
+        },
+      });
+      ScrollTrigger.refresh();
+    }, heroRef);
 
     return () => {
-      scrollTrigger.kill();
-      cloudMarqueeTween.kill();
+      ctx.revert();
     };
   }, [windowWidth]);
 
