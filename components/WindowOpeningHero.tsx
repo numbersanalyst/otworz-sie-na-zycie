@@ -48,7 +48,8 @@ export const WindowOpeningHero = () => {
     },
     {
       text: "Życie ma w przypadku każdego tę samą godność i tę samą wartość. Szacunek dla życia drugiego jest taki sam jak ten, który jest się winnym wobec własnej egzystencj",
-      source: "Por. tamże, V, 1: AAS 112 (2020)",
+      source:
+        "Samaritanus bonus, o opiece nad osobami w krytycznych i końcowych fazach życia",
     },
     {
       text: "Godność każdej istoty ludzkiej ma charakter istotowy i obowiązuje od chwili poczęcia do naturalnej śmierci.",
@@ -98,8 +99,8 @@ export const WindowOpeningHero = () => {
         ? window.innerHeight * 8.5
         : window.innerHeight * 2.5;
 
-      const quoteStart = isMobile ? 0.45 : 0.5;
-      const quoteRange = isMobile ? 0.55 : 0.45;
+      const quoteStart = isMobile ? 0.45 : 0.4;
+      const quoteRange = isMobile ? 0.55 : 0.4;
 
       const skyMoveDistance = skyContainer.offsetHeight - window.innerHeight;
 
@@ -300,7 +301,7 @@ export const WindowOpeningHero = () => {
                 1,
                 Math.max(0, (progress - quoteStart) / quoteRange),
               );
-              const translateY = (0.5 - qProgress) * window.innerHeight * 1.2;
+              const translateY = (0.5 - qProgress) * window.innerHeight * 0.8;
 
               gsap.set(heroCopy, {
                 y: translateY,
@@ -468,7 +469,7 @@ export const WindowOpeningHero = () => {
                   key={i}
                   className="relative rounded-lg sm:rounded-xl bg-white/60 backdrop-blur-md border border-white/40 p-4 sm:p-4 md:p-6 text-left shadow-sm"
                 >
-                  <p className="font-serif font-light text-slate-900 text-sm sm:text-lg md:text-2xl leading-relaxed">
+                  <p className="font-serif font-light text-slate-900 text-lg md:text-2xl leading-relaxed">
                     &#x201E;{text}&#x201D;
                   </p>
                   <footer className="mt-2 sm:mt-3 text-slate-800 text-xs md:text-sm font-light">
