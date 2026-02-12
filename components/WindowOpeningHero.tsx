@@ -366,241 +366,229 @@ export const WindowOpeningHero = () => {
   }, [windowWidth]);
 
   return (
-    <>
-      <section
-        ref={heroRef}
-        className="relative w-full h-screen overflow-hidden perspective-[1000px] bg-black"
+    <section
+      ref={heroRef}
+      className="relative w-full h-screen overflow-hidden perspective-[1000px] bg-black"
+    >
+      <div
+        ref={skyContainerRef}
+        className="absolute top-0 left-0 w-full will-change-transform h-[500vh] md:h-[350vh]"
+      >
+        <Image
+          className="w-full h-full object-cover"
+          src={heroImage}
+          width={1920}
+          height={3500}
+          alt="niebo"
+          priority
+        />
+      </div>
+
+      {/* INTRO WORDS */}
+      <div
+        ref={introWord1Ref}
+        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
+      >
+        <h2
+          className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
+          style={{ marginLeft: "-5%" }}
+        >
+          Miłość
+        </h2>
+      </div>
+      <div
+        ref={introWord2Ref}
+        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
+      >
+        <h2
+          className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
+          style={{ marginRight: "-8%" }}
+        >
+          Przyszłość
+        </h2>
+      </div>
+      <div
+        ref={introWord3Ref}
+        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
+      >
+        <h2
+          className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
+          style={{ marginLeft: "6%" }}
+        >
+          Nadzieja
+        </h2>
+      </div>
+      <div
+        ref={introTextRef}
+        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-25 pointer-events-none"
+      >
+        <h2 className="text-4xl md:text-6xl lg:text-7xl text-center font-serif font-light text-white drop-shadow-2xl px-4">
+          Zobacz <br /> Życie w świetle Kościoła
+        </h2>
+      </div>
+
+      <div
+        ref={heroCopyRef}
+        className="absolute top-0 left-0 w-full flex flex-col z-20 min-h-0 h-screen items-center justify-start md:justify-center p-0 md:p-12"
       >
         <div
-          ref={skyContainerRef}
-          className="absolute top-0 left-0 w-full will-change-transform h-[500vh] md:h-[350vh]"
+          ref={heroCopyInnerRef}
+          className="w-full flex flex-col items-center pt-8 md:pt-0 pb-32 md:pb-0 px-4 md:px-0"
         >
-          <Image
-            className="w-full h-full object-cover"
-            src={heroImage}
-            width={1920}
-            height={3500}
-            alt="niebo"
-            priority
-          />
-        </div>
+          <div className="relative flex flex-col md:flex-row md:items-start items-center gap-3 sm:gap-4 md:gap-16 mx-auto max-w-6xl">
+            {/* Tło tylko dla mobile */}
+            <div className="md:hidden absolute inset-0 -m-4 bg-white/40 blur-xl rounded-full scale-110 -z-10" />
+            {/* Tło dla desktopu */}
+            <div className="hidden md:block absolute top-0 left-0 w-full h-full backdrop-blur-sm radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%) rounded-4xl" />
 
-        {/* INTRO WORDS */}
-        <div
-          ref={introWord1Ref}
-          className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
-        >
-          <h2
-            className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
-            style={{ marginLeft: "-5%" }}
-          >
-            Miłość
-          </h2>
-        </div>
-        <div
-          ref={introWord2Ref}
-          className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
-        >
-          <h2
-            className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
-            style={{ marginRight: "-8%" }}
-          >
-            Przyszłość
-          </h2>
-        </div>
-        <div
-          ref={introWord3Ref}
-          className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
-        >
-          <h2
-            className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
-            style={{ marginLeft: "6%" }}
-          >
-            Nadzieja
-          </h2>
-        </div>
-        <div
-          ref={introTextRef}
-          className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-25 pointer-events-none"
-        >
-          <h2 className="text-4xl md:text-6xl lg:text-7xl text-center font-serif font-light text-white drop-shadow-2xl px-4">
-            Zobacz <br /> Życie w świetle Kościoła
-          </h2>
-        </div>
+            <Image
+              src={jp2}
+              alt="Jan Paweł II"
+              width={280}
+              height={460}
+              className="object-contain opacity-90 md:opacity-75 w-[140px] sm:w-[180px] md:w-[240px] lg:w-[280px] shrink-0"
+            />
 
-        <div
-          ref={heroCopyRef}
-          className="absolute top-0 left-0 w-full flex flex-col z-20 min-h-0 h-screen items-center justify-start md:justify-center p-0 md:p-12"
-        >
-          <div
-            ref={heroCopyInnerRef}
-            className="w-full flex flex-col items-center pt-8 md:pt-0 pb-32 md:pb-0 px-4 md:px-0"
-          >
-            <div className="relative flex flex-col md:flex-row md:items-start items-center gap-3 sm:gap-4 md:gap-16 mx-auto max-w-6xl">
-              {/* Tło tylko dla mobile */}
-              <div className="md:hidden absolute inset-0 -m-4 bg-white/40 blur-xl rounded-full scale-110 -z-10" />
-              {/* Tło dla desktopu */}
-              <div className="hidden md:block absolute top-0 left-0 w-full h-full backdrop-blur-sm radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%) rounded-4xl" />
-
-              <Image
-                src={jp2}
-                alt="Jan Paweł II"
-                width={280}
-                height={460}
-                className="object-contain opacity-90 md:opacity-75 w-[140px] sm:w-[180px] md:w-[240px] lg:w-[280px] shrink-0"
-              />
-
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-light text-center md:text-left leading-relaxed drop-shadow-2xl p-2 sm:p-3 md:p-0 text-slate-900 md:text-slate-800/95 flex-1 pointer-events-none z-10">
-                &#x201E;
-                {QUOTE_TEXT.split(" ").map((word, index) => (
-                  <span
-                    key={index}
-                    ref={(el) => setQuoteWordRef(el, index)}
-                    className="inline-block mr-[0.2em] transition-none"
-                  >
-                    {word}
-                  </span>
-                ))}
-                &#x201D;
-                <br />
-                <span className="font-light text-xs sm:text-base md:text-lg text-slate-900 md:text-slate-800/90 mt-2 sm:mt-6 inline-block">
-                  — Jan Paweł II, &#x201E;Evangelium vitae&#x201D;
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-light text-center md:text-left leading-relaxed drop-shadow-2xl p-2 sm:p-3 md:p-0 text-slate-900 md:text-slate-800/95 flex-1 pointer-events-none z-10">
+              &#x201E;
+              {QUOTE_TEXT.split(" ").map((word, index) => (
+                <span
+                  key={index}
+                  ref={(el) => setQuoteWordRef(el, index)}
+                  className="inline-block mr-[0.2em] transition-none"
+                >
+                  {word}
                 </span>
-              </h2>
-            </div>
+              ))}
+              &#x201D;
+              <br />
+              <span className="font-light text-xs sm:text-base md:text-lg text-slate-900 md:text-slate-800/90 mt-2 sm:mt-6 inline-block">
+                — Jan Paweł II, &#x201E;Evangelium vitae&#x201D;
+              </span>
+            </h2>
+          </div>
 
-            <div className="relative w-full max-w-5xl mx-auto mt-6 sm:mt-8 md:mt-16 lg:mt-20 px-2 sm:px-4 md:px-0 shrink-0 z-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-3 md:gap-6 items-start">
-                {SUB_QUOTES.map(({ text, source }, i) => (
-                  <blockquote
-                    key={i}
-                    className="relative rounded-lg sm:rounded-xl bg-white/60 backdrop-blur-md border border-white/40 p-4 sm:p-4 md:p-6 text-left shadow-sm"
-                  >
-                    <p className="font-serif font-light text-slate-900 text-sm sm:text-lg md:text-2xl leading-relaxed">
-                      &#x201E;{text}&#x201D;
-                    </p>
-                    <footer className="mt-2 sm:mt-3 text-slate-800 text-xs md:text-sm font-light">
-                      — {source}
-                    </footer>
-                  </blockquote>
-                ))}
-              </div>
+          <div className="relative w-full max-w-5xl mx-auto mt-6 sm:mt-8 md:mt-16 lg:mt-20 px-2 sm:px-4 md:px-0 shrink-0 z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-3 md:gap-6 items-start">
+              {SUB_QUOTES.map(({ text, source }, i) => (
+                <blockquote
+                  key={i}
+                  className="relative rounded-lg sm:rounded-xl bg-white/60 backdrop-blur-md border border-white/40 p-4 sm:p-4 md:p-6 text-left shadow-sm"
+                >
+                  <p className="font-serif font-light text-slate-900 text-sm sm:text-lg md:text-2xl leading-relaxed">
+                    &#x201E;{text}&#x201D;
+                  </p>
+                  <footer className="mt-2 sm:mt-3 text-slate-800 text-xs md:text-sm font-light">
+                    — {source}
+                  </footer>
+                </blockquote>
+              ))}
             </div>
           </div>
         </div>
+      </div>
 
-        {/* CLOUDS */}
-        <div
-          ref={cloudsRef}
-          className="absolute top-1/4 left-0 w-[800%] md:w-[300%] h-[60vh] z-10 flex flex-row pointer-events-none"
-        >
-          <div className="w-full h-full relative flex justify-center items-start">
-            <Image
-              className="w-full h-full object-contain object-top drop-shadow-xl scale-200"
-              src={cloudsImage}
-              width={1920}
-              height={600}
-              alt="chmury"
-              priority
-            />
-          </div>
-          <div className="w-full h-full relative flex justify-center items-start">
-            <Image
-              className="w-full h-full object-contain object-top drop-shadow-xl scale-200"
-              src={cloudsImage}
-              width={1920}
-              height={600}
-              alt="chmury"
-              priority
-            />
-          </div>
-        </div>
-        <div
-          ref={windowContainerRef}
-          className="absolute top-0 left-0 w-full will-change-transform h-screen z-20"
-        >
+      {/* CLOUDS */}
+      <div
+        ref={cloudsRef}
+        className="absolute top-1/4 left-0 w-[800%] md:w-[300%] h-[60vh] z-10 flex flex-row pointer-events-none"
+      >
+        <div className="w-full h-full relative flex justify-center items-start">
           <Image
-            className="w-full h-full object-cover pointer-events-none"
-            src={windowFrameImage}
+            className="w-full h-full object-contain object-top drop-shadow-xl scale-200"
+            src={cloudsImage}
             width={1920}
-            height={1080}
-            alt="okno"
+            height={600}
+            alt="chmury"
             priority
           />
         </div>
-        <div
-          ref={windowLeftRef}
-          className="absolute top-0 left-0 w-full will-change-transform h-screen z-10"
-          style={{ transformStyle: "preserve-3d" }}
-        >
+        <div className="w-full h-full relative flex justify-center items-start">
           <Image
-            className="w-full h-full object-cover pointer-events-none"
-            src={windowLeftImage}
+            className="w-full h-full object-contain object-top drop-shadow-xl scale-200"
+            src={cloudsImage}
             width={1920}
-            height={1080}
-            alt="lewe skrzydło"
+            height={600}
+            alt="chmury"
             priority
           />
         </div>
-        <div
-          ref={windowRightRef}
-          className="absolute top-0 left-0 w-full will-change-transform h-screen z-10"
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          <Image
-            className="w-full h-full object-cover pointer-events-none"
-            src={windowRightImage}
-            width={1920}
-            height={1080}
-            alt="prawe skrzydło"
-            priority
-          />
+      </div>
+      <div
+        ref={windowContainerRef}
+        className="absolute top-0 left-0 w-full will-change-transform h-screen z-20"
+      >
+        <Image
+          className="w-full h-full object-cover pointer-events-none"
+          src={windowFrameImage}
+          width={1920}
+          height={1080}
+          alt="okno"
+          priority
+        />
+      </div>
+      <div
+        ref={windowLeftRef}
+        className="absolute top-0 left-0 w-full will-change-transform h-screen z-10"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        <Image
+          className="w-full h-full object-cover pointer-events-none"
+          src={windowLeftImage}
+          width={1920}
+          height={1080}
+          alt="lewe skrzydło"
+          priority
+        />
+      </div>
+      <div
+        ref={windowRightRef}
+        className="absolute top-0 left-0 w-full will-change-transform h-screen z-10"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        <Image
+          className="w-full h-full object-cover pointer-events-none"
+          src={windowRightImage}
+          width={1920}
+          height={1080}
+          alt="prawe skrzydło"
+          priority
+        />
+      </div>
+      <div
+        ref={heroHeaderRef}
+        className="absolute top-0 left-0 w-full will-change-transform h-svh flex md:flex-row flex-col lg:gap-5 items-center md:justify-center justify-between p-6 md:p-12 lg:p-24 transform-3d z-30"
+      >
+        <div className="md:flex-1 flex flex-col md:h-full justify-between">
+          <h1 className="text-5xl lg:text-6xl font-serif font-light">
+            Życie to
+            <br /> najpiękniejszy dar
+          </h1>
+          <p className="text-2xl font-serif font-light max-w-xl md:block hidden">
+            Każdy dzień jest zaproszeniem, by ten dar rozwijać, chronić i
+            dzielić się nim z innymi. Choć bywa trudne i pełne prób, niesie w
+            sobie sens i nadzieję.
+          </p>
         </div>
-        <div
-          ref={heroHeaderRef}
-          className="absolute top-0 left-0 w-full will-change-transform h-svh flex md:flex-row flex-col lg:gap-5 items-center md:justify-center justify-between p-6 md:p-12 lg:p-24 transform-3d z-30"
-        >
-          <div className="md:flex-1 flex flex-col md:h-full justify-between">
-            <h1 className="text-5xl lg:text-6xl font-serif font-light">
-              Życie to
-              <br /> najpiękniejszy dar
+        <div className="md:flex-1 flex flex-col md:h-full justify-between items-end text-right">
+          <p className="text-2xl font-serif font-light md:block hidden">
+            Wartość, <br /> która nie podlega negocjacjom
+          </p>
+          <div className="flex flex-col gap-y-5 md:gap-y-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light">
+              To co piękne <br /> jest w nas
             </h1>
-            <p className="text-2xl font-serif font-light max-w-xl md:block hidden">
-              Każdy dzień jest zaproszeniem, by ten dar rozwijać, chronić i
-              dzielić się nim z innymi. Choć bywa trudne i pełne prób, niesie w
-              sobie sens i nadzieję.
-            </p>
-          </div>
-          <div className="md:flex-1 flex flex-col md:h-full justify-between items-end text-right">
-            <p className="text-2xl font-serif font-light md:block hidden">
-              Wartość, <br /> która nie podlega negocjacjom
-            </p>
-            <div className="flex flex-col gap-y-5 md:gap-y-10">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light">
-                To co piękne <br /> jest w nas
-              </h1>
-              <hr />
-              <div className="flex justify-between items-center gap-x-5">
-                <p className="font-serif font-light text-xl flex justify-end items-center gap-x-2">
-                  <ArrowDown
-                    className="animate-bounce"
-                    width={20}
-                    height={20}
-                  />
-                  Przewiń
-                </p>
-                <p className="font-serif font-light text-xl">Poznaj prawdę</p>
-              </div>
+            <hr />
+            <div className="flex justify-between items-center gap-x-5">
+              <p className="font-serif font-light text-xl flex justify-end items-center gap-x-2">
+                <ArrowDown className="animate-bounce" width={20} height={20} />
+                Przewiń
+              </p>
+              <p className="font-serif font-light text-xl">Poznaj prawdę</p>
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="p-8 flex items-center justify-center h-svh">
-        <h1 className="text-6xl font-serif font-light">
-          Czy to prawda? Dokąd zmierza świat?
-        </h1>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
