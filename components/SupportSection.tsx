@@ -84,6 +84,9 @@ export const SupportSection = () => {
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="mb-16">
+          <p className="text-xl font-light text-zinc-400 max-w-2xl italic">
+            Pamiętaj:
+          </p>
           <h2 className="text-4xl md:text-6xl font-serif font-light text-white mb-6">
             Nie jesteś sama. <br /> Nie jesteś sam.
           </h2>

@@ -308,7 +308,7 @@ export const ConsequencesSection = () => {
                       );
                       setActiveVideo(parsed);
                     }}
-                    className="absolute inset-0 w-full h-full flex items-center justify-center group/play"
+                    className="absolute inset-0 w-full h-full flex items-center justify-center group/play cursor-pointer"
                   >
                     <div className="w-16 h-16 bg-emerald-500/95 hover:bg-emerald-500 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl shadow-black/50 group-hover/play:shadow-emerald-500/30 group-hover/play:scale-110 transition-all duration-300 border-4 border-white/30">
                       <Play className="w-7 h-7 text-black ml-1" />
