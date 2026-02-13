@@ -98,7 +98,7 @@ const testimonies: Testimony[] = [
       "I would have emotional roller coasters... severe depression, I was pretty much suicidal by the time I had the third abortion. My partner was experiencing the same symptoms.",
     quotePl:
       "Miałam emocjonalną huśtawkę... ciężką depresję, byłam praktycznie na skraju samobójstwa przy trzeciej aborcji. Mój partner doświadczał tych samych objawów.",
-    name: "Patricia (Live Action)",
+    name: "Patricia, była pracownica kliniki",
     videoUrl: "https://www.youtube.com/watch?v=X2Z37kuZwpE",
     timestamp: "14:18",
     thumbnail: thumbnail2,
