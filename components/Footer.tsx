@@ -1,4 +1,5 @@
 import Image from "next/image";
+import logo from "@/assets/logo-psozc.svg";
 
 export const Footer = () => {
   return (
@@ -8,7 +9,7 @@ export const Footer = () => {
           <p className="text-xl mt-8 italic">
             Praca konkursowa Stowarzyszenia Obrońców Życia Człowieka
           </p>
-          <Image src="/logo-psozc.svg" alt="Logo" width={400} height={400} />
+          <Image src={logo} alt="Logo" width={400} height={400} />
         </div>
       </div>
     </footer>

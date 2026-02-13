@@ -3,12 +3,12 @@
 import Image from "next/image";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
-import heroImage from "@/public/sky_full.webp";
-import windowFrameImage from "@/public/window_frame.webp";
-import windowLeftImage from "@/public/window_left.webp";
-import windowRightImage from "@/public/window_right.webp";
-import cloudsImage from "@/public/clouds.webp";
-import jp2 from "@/public/jp2.png";
+import heroImage from "@/assets/sky_full.webp";
+import windowFrameImage from "@/assets/window_frame.webp";
+import windowLeftImage from "@/assets/window_left.webp";
+import windowRightImage from "@/assets/window_right.webp";
+import cloudsImage from "@/assets/clouds.webp";
+import jp2 from "@/assets/jp2.png";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

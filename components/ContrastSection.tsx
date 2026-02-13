@@ -5,10 +5,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-import genKidPhoto from "@/public/genkid.webp";
-import abortionPhoto from "@/public/abortion1.jpg";
-import pillPhoto from "@/public/pill.webp";
-import euthanasiaPhoto from "@/public/euthanasia.jpeg";
+import genKidPhoto from "@/assets/genkid.webp";
+import abortionPhoto from "@/assets/abortion1.jpg";
+import pillPhoto from "@/assets/pill.webp";
+import euthanasiaPhoto from "@/assets/euthanasia.jpeg";
 import Image from "next/image";
 
 const issues = [
