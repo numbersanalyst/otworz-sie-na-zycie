@@ -47,12 +47,12 @@ export const WindowOpeningHero = () => {
       source: "Jan Paweł II, Kalisz 4 czerwca 1997 r.",
     },
     {
-      text: "Życie ma w przypadku każdego tę samą godność i tę samą wartość. Szacunek dla życia drugiego jest taki sam jak ten, który jest się winnym wobec własnej egzystencj",
+      text: "Życie ma w przypadku każdego tę samą godność i tę samą wartość. Szacunek dla życia drugiego jest taki sam jak ten, który jest się winnym wobec własnej egzystencji",
       source:
         "Samaritanus bonus, o opiece nad osobami w krytycznych i końcowych fazach życia",
     },
     {
-      text: "Godność każdej istoty ludzkiej ma charakter istotowy i obowiązuje od chwili poczęcia do naturalnej śmierci.",
+      text: "Godność każdej istoty ludzkiej ma charakter istotowy i obowiązuje od chwili poczęcia do naturalnej śmierci",
       source: "Franciszek, 21 stycznia 2022 r.",
     },
   ];
