@@ -8,8 +8,10 @@ import {
   Home,
   Baby,
   ShieldCheck,
-  BookOpen,
-  CandlestickChart,
+  Phone,
+  Sparkles,
+  Cross,
+  Flame,
 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -39,16 +41,22 @@ const supportItems = [
     icon: <ShieldCheck className="w-8 h-8 stroke-[1px]" />,
   },
   {
-    title: "Pamięć i Nadzieja",
+    title: "Telefony Zaufania",
     description:
-      "Wsparcie dla rodziców po utracie dziecka. Twoja historia ma znaczenie.",
-    icon: <CandlestickChart className="w-8 h-8 stroke-[1px]" />,
+      "Bezpłatna, anonimowa pomoc 24/7. Zadzwoń – nie jesteś sama w trudnej chwili.",
+    icon: <Phone className="w-8 h-8 stroke-[1px]" />,
   },
   {
-    title: "Baza Wiedzy",
+    title: "Zakony, które się modlą",
     description:
-      "Rzetelne fakty o bioetyce, in vitro i ochronie życia poczętego.",
-    icon: <BookOpen className="w-8 h-8 stroke-[1px]" />,
+      "Siostry zakonne i bracia mnisi codziennie modlą się za dzieci utracone i ich rodziców. Możesz nadać dziecku imię – zakonnice będą je wymawiać w modlitwie.",
+    icon: <Cross className="w-8 h-8 stroke-[1px]" />,
+  },
+  {
+    title: "Pomniki Dzieci Nienarodzonych",
+    description:
+      "W całej Polsce stoją pomniki pamięci. Możesz przyjść, zapalić znicz i pożegnać swoje dziecko. Ono było, miało znaczenie i nie zostało zapomniane.",
+    icon: <Heart className="w-8 h-8 stroke-[1px]" />,
   },
 ];
 
@@ -114,10 +122,6 @@ export const SupportSection = () => {
               <p className="text-zinc-400 font-light leading-relaxed">
                 {item.description}
               </p>
-              <div className="mt-8 flex items-center gap-2 text-xs uppercase tracking-widest text-zinc-500 group-hover:text-white transition-colors cursor-pointer">
-                <span>Dowiedz się więcej</span>
-                <div className="w-8 h-[1px] bg-zinc-700 group-hover:bg-white transition-all" />
-              </div>
             </div>
           ))}
         </div>
