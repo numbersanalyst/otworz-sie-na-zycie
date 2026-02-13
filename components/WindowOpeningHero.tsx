@@ -95,12 +95,13 @@ export const WindowOpeningHero = () => {
 
       const isMobile = window.innerWidth < 768;
 
+      const contentHeight = heroCopyInner.offsetHeight;
       const pinDistance = isMobile
-        ? window.innerHeight * 8.5
+        ? contentHeight * 2 + window.innerHeight
         : window.innerHeight * 2.5;
 
-      const quoteStart = isMobile ? 0.45 : 0.4;
-      const quoteRange = isMobile ? 0.55 : 0.4;
+      const quoteStart = 0.55;
+      const quoteRange = isMobile ? 0.45 : 0.4;
 
       const skyMoveDistance = skyContainer.offsetHeight - window.innerHeight;
 
@@ -137,7 +138,6 @@ export const WindowOpeningHero = () => {
         repeat: -1,
       });
 
-      const contentHeight = heroCopyInner.offsetHeight;
       const endPositionMobile = -contentHeight + window.innerHeight - 100;
 
       ScrollTrigger.create({
@@ -440,10 +440,10 @@ export const WindowOpeningHero = () => {
               alt="Jan Paweł II"
               width={280}
               height={460}
-              className="object-contain opacity-90 md:opacity-75 w-[140px] sm:w-[180px] md:w-[240px] lg:w-[280px] shrink-0"
+              className="object-contain opacity-90 md:opacity-75 w-[260px] md:w-[240px] lg:w-[280px] shrink-0"
             />
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-light text-center md:text-left leading-relaxed drop-shadow-2xl p-2 sm:p-3 md:p-0 text-slate-900 md:text-slate-800/95 flex-1 pointer-events-none z-10">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-light text-center md:text-left leading-relaxed drop-shadow-2xl p-2 sm:p-3 md:p-0 text-slate-900 md:text-slate-800/95 flex-1 z-20 pointer-events-none">
               &#x201E;
               {QUOTE_TEXT.split(" ").map((word, index) => (
                 <span
@@ -510,7 +510,7 @@ export const WindowOpeningHero = () => {
       </div>
       <div
         ref={windowContainerRef}
-        className="absolute top-0 left-0 w-full will-change-transform h-screen z-20"
+        className="absolute top-0 left-0 w-full will-change-transform h-screen z-20 pointer-events-none"
       >
         <Image
           className="w-full h-full object-cover pointer-events-none"
@@ -523,7 +523,7 @@ export const WindowOpeningHero = () => {
       </div>
       <div
         ref={windowLeftRef}
-        className="absolute top-0 left-0 w-full will-change-transform h-screen z-10"
+        className="absolute top-0 left-0 w-full will-change-transform h-screen z-10 pointer-events-none"
         style={{ transformStyle: "preserve-3d" }}
       >
         <Image
@@ -537,7 +537,7 @@ export const WindowOpeningHero = () => {
       </div>
       <div
         ref={windowRightRef}
-        className="absolute top-0 left-0 w-full will-change-transform h-screen z-10"
+        className="absolute top-0 left-0 w-full will-change-transform h-screen z-10 pointer-events-none"
         style={{ transformStyle: "preserve-3d" }}
       >
         <Image
@@ -551,9 +551,9 @@ export const WindowOpeningHero = () => {
       </div>
       <div
         ref={heroHeaderRef}
-        className="absolute top-0 left-0 w-full will-change-transform h-svh flex md:flex-row flex-col lg:gap-5 items-center md:justify-center justify-between p-6 md:p-12 lg:p-24 transform-3d z-30"
+        className="absolute top-0 left-0 w-full will-change-transform h-svh flex md:flex-row flex-col lg:gap-5 items-center md:justify-center justify-between p-6 md:p-12 lg:p-24 transform-3d z-30 pointer-events-none"
       >
-        <div className="md:flex-1 flex flex-col md:h-full justify-between">
+        <div className="md:flex-1 flex flex-col md:h-full justify-between pointer-events-auto">
           <h1 className="text-5xl lg:text-6xl font-serif font-light">
             Życie to
             <br /> najpiękniejszy dar
@@ -564,7 +564,7 @@ export const WindowOpeningHero = () => {
             sobie sens i nadzieję.
           </p>
         </div>
-        <div className="md:flex-1 flex flex-col md:h-full justify-between items-end text-right">
+        <div className="md:flex-1 flex flex-col md:h-full justify-between items-end text-right pointer-events-auto">
           <p className="text-2xl font-serif font-light md:block hidden">
             Wartość, <br /> która nie podlega negocjacjom
           </p>

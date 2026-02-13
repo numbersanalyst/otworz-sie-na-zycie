@@ -8,7 +8,7 @@ export const Ending = () => {
           </p>
 
           <h2 className="text-5xl md:text-7xl font-serif font-light mb-8 italic">
-            Nie pozostajmy bierni.
+            Nie pozostań obojętny.
           </h2>
         </div>
       </div>
