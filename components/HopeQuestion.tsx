@@ -35,16 +35,16 @@ export const HopeQuestion = () => {
     >
       <div className="max-w-6xl mx-auto">
         <div ref={textRef} className="text-center">
-          <h2 className="text-zinc-400 text-xs md:text-sm uppercase tracking-[0.4em] mb-8 font-medium">
+          <h2 className="text-zinc-600 text-xs md:text-sm uppercase tracking-[0.4em] mb-8 font-medium">
             Co gdyby istniała inna droga?
           </h2>
-          <h3 className="text-4xl md:text-6xl font-serif font-light leading-tight">
+          <h3 className="text-4xl md:text-6xl font-serif font-light leading-tight text-zinc-900">
             Nigdy nie jest za późno na <br className="hidden md:block" />
-            <span className="italic text-zinc-500 font-serif">
+            <span className="italic text-zinc-700 font-serif">
               pokój w sercu.
             </span>
           </h3>
-          <p className="mt-12 text-zinc-500 max-w-2xl mx-auto font-light leading-relaxed text-lg italic">
+          <p className="mt-12 text-zinc-800 max-w-2xl mx-auto font-light leading-relaxed text-lg italic">
             Nie przyszedłem bowiem po to, aby świat sądzić, ale aby świat
             zbawić. – Jan 12,47
           </p>
