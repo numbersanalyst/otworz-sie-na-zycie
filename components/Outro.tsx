@@ -1,4 +1,4 @@
-export const Ending = () => {
+export const Outro = () => {
   return (
     <section className="bg-black text-white py-32 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">

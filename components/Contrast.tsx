@@ -38,7 +38,7 @@ const issues = [
   },
 ];
 
-export const ContrastSection = () => {
+export const Contrast = () => {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
 

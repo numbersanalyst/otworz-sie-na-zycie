@@ -17,7 +17,7 @@ import { ArrowDown } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const WindowOpeningHero = () => {
+export const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
 
   // Tło i okna

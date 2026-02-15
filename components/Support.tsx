@@ -60,7 +60,7 @@ const supportItems = [
   },
 ];
 
-export const SupportSection = () => {
+export const Support = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 

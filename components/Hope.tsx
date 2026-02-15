@@ -77,7 +77,7 @@ const parseYouTubeUrl = (url: string, timestamp?: string) => {
   return { videoId, startSeconds };
 };
 
-export const HopeSection = () => {
+export const Hope = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headingRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<HTMLDivElement | null>(null);

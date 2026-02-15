@@ -1,26 +1,26 @@
 import { Loader } from "@/components/Loader";
-import { WindowOpeningHero } from "@/components/WindowOpeningHero";
-import { ReadMore } from "@/components/ReadMore";
-import { SupportSection } from "@/components/SupportSection";
-import { ContrastSection } from "@/components/ContrastSection";
-import { ConsequencesSection } from "@/components/ConsequencesSection";
-import { HopeSection } from "@/components/HopeSection";
-import { HopeAskSection } from "@/components/HopeAskSection";
-import { Ending } from "@/components/Ending";
+import { Hero } from "@/components/Hero";
+import { Brochures } from "@/components/Brochures";
+import { Support } from "@/components/Support";
+import { Contrast } from "@/components/Contrast";
+import { Consequences } from "@/components/Consequences";
+import { Hope } from "@/components/Hope";
+import { HopeQuestion } from "@/components/HopeQuestion";
+import { Outro } from "@/components/Outro";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
       <Loader />
-      <WindowOpeningHero />
-      <ContrastSection />
-      <ConsequencesSection />
-      <HopeAskSection />
-      <HopeSection />
-      <SupportSection />
-      <ReadMore />
-      <Ending />
+      <Hero />
+      <Contrast />
+      <Consequences />
+      <HopeQuestion />
+      <Hope />
+      <Support />
+      <Brochures />
+      <Outro />
       <Footer />
     </>
   );

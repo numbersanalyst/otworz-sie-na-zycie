@@ -44,7 +44,7 @@ const brochures: Brochure[] = [
   },
 ];
 
-export const ReadMore = () => {
+export const Brochures = () => {
   return (
     <section className="w-full py-16 px-4 bg-linear-to-b from-sky-50 to-white">
       <div className="max-w-7xl mx-auto">
