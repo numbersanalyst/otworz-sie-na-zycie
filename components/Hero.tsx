@@ -104,18 +104,21 @@ export const Hero = () => {
         opacity: 1,
         visibility: "visible",
         y: window.innerHeight,
+        force3D: true,
       });
 
       gsap.set([introWord1, introWord2, introWord3], {
         opacity: 0,
         y: 30,
         filter: "blur(10px)",
+        force3D: true,
       });
 
       gsap.set(introText, {
         opacity: 0,
         y: 30,
         filter: "blur(10px)",
+        force3D: true,
       });
 
       quoteWords.forEach((word) => {
@@ -130,6 +133,7 @@ export const Hero = () => {
         ease: "none",
         duration: 20,
         repeat: -1,
+        force3D: true,
       });
 
       const endPositionMobile = -contentHeight + window.innerHeight - 100;
@@ -163,6 +167,7 @@ export const Hero = () => {
               filter: isMobileUpdate
                 ? "none"
                 : `blur(${10 - word1Progress * 10}px)`,
+              force3D: true,
             });
             // Word 2
             if (introProgress > 0.23) {
@@ -177,6 +182,7 @@ export const Hero = () => {
                 filter: isMobileUpdate
                   ? "none"
                   : `blur(${10 - word2Progress * 10}px)`,
+                force3D: true,
               });
             } else {
               gsap.set(introWord2, { opacity: 0 });
@@ -194,6 +200,7 @@ export const Hero = () => {
                 filter: isMobileUpdate
                   ? "none"
                   : `blur(${10 - word3Progress * 10}px)`,
+                force3D: true,
               });
             } else {
               gsap.set(introWord3, { opacity: 0 });
@@ -215,6 +222,7 @@ export const Hero = () => {
               filter: isMobileUpdate
                 ? "none"
                 : `blur(${Math.max(0, 10 - introTextProgress * 15)}px)`,
+              force3D: true,
             });
           } else {
             gsap.set(introText, { opacity: 0 });
@@ -222,11 +230,15 @@ export const Hero = () => {
 
           // --- 3. WINDOW OPENING ---
           const windowScale = progress <= 0.5 ? 1 + (progress / 0.5) * 4 : 5;
-          gsap.set(windowContainer, { scale: windowScale });
+          gsap.set(windowContainer, {
+            scale: windowScale,
+            force3D: true,
+          });
           gsap.set(heroHeader, {
             scale: windowScale + progress * 1.5,
             z: progress * 500,
             visibility: progress <= 0.66 ? "visible" : "hidden",
+            force3D: true,
           });
 
           const wingProgress = Math.min(progress / 0.5, 1);
@@ -242,6 +254,7 @@ export const Hero = () => {
             rotateX: -progress * 10,
             opacity: wingOpacity,
             transformOrigin: "center center",
+            force3D: true,
           });
 
           gsap.set(windowRight, {
@@ -253,9 +266,13 @@ export const Hero = () => {
             rotateX: -progress * 10,
             opacity: wingOpacity,
             transformOrigin: "center center",
+            force3D: true,
           });
 
-          gsap.set(skyContainer, { y: -progress * skyMoveDistance });
+          gsap.set(skyContainer, {
+            y: -progress * skyMoveDistance,
+            force3D: true,
+          });
 
           let cloudYPercent = 0;
           let cloudOpacity = 1;
@@ -266,6 +283,7 @@ export const Hero = () => {
           gsap.set(clouds, {
             yPercent: cloudYPercent,
             opacity: cloudOpacity,
+            force3D: true,
           });
 
           // --- 4. HERO COPY ---
@@ -280,6 +298,7 @@ export const Hero = () => {
               visibility: "visible",
               opacity: 1,
               y: currentY,
+              force3D: true,
             });
 
             const colorProgress = isMobileUpdate
@@ -323,6 +342,7 @@ export const Hero = () => {
               visibility: "visible",
               y: window.innerHeight,
               opacity: 1,
+              force3D: true,
             });
           }
         },
@@ -351,6 +371,7 @@ export const Hero = () => {
           height={3500}
           alt="niebo"
           priority
+          quality={70}
           sizes="100vw"
           placeholder="blur"
         />
@@ -358,7 +379,7 @@ export const Hero = () => {
       {/* INTRO WORDS */}
       <div
         ref={introWord1Ref}
-        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
+        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none will-change-transform"
       >
         <h2
           className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
@@ -369,7 +390,7 @@ export const Hero = () => {
       </div>
       <div
         ref={introWord2Ref}
-        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
+        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none will-change-transform"
       >
         <h2
           className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
@@ -380,7 +401,7 @@ export const Hero = () => {
       </div>
       <div
         ref={introWord3Ref}
-        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
+        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none will-change-transform"
       >
         <h2
           className="text-5xl md:text-7xl font-serif font-light text-white drop-shadow-2xl"
@@ -391,7 +412,7 @@ export const Hero = () => {
       </div>
       <div
         ref={introTextRef}
-        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-25 pointer-events-none"
+        className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-25 pointer-events-none will-change-transform"
       >
         <h2 className="text-4xl md:text-6xl lg:text-7xl text-center font-serif font-light text-white drop-shadow-2xl px-4">
           Zobacz <br /> Życie w świetle Kościoła
@@ -400,7 +421,7 @@ export const Hero = () => {
 
       <div
         ref={heroCopyRef}
-        className="absolute top-0 left-0 w-full flex flex-col z-20 min-h-0 h-screen items-center justify-start p-0 md:p-12"
+        className="absolute top-0 left-0 w-full flex flex-col z-20 min-h-0 h-screen items-center justify-start p-0 md:p-12 will-change-transform"
       >
         <div
           ref={heroCopyInnerRef}
@@ -414,6 +435,8 @@ export const Hero = () => {
               alt="Jan Paweł II"
               width={280}
               height={460}
+              quality={85}
+              sizes="(max-width: 768px) 260px, 280px"
               className="object-contain opacity-90 md:opacity-75 w-[260px] md:w-[240px] lg:w-[280px] shrink-0"
             />
 
@@ -459,7 +482,7 @@ export const Hero = () => {
       {/* CLOUDS */}
       <div
         ref={cloudsRef}
-        className="absolute top-1/4 left-0 w-[800%] md:w-[300%] h-[60vh] z-10 flex flex-row pointer-events-none"
+        className="absolute top-1/4 left-0 w-[800%] md:w-[300%] h-[60vh] z-10 flex flex-row pointer-events-none will-change-transform"
       >
         <div className="w-full h-full relative flex justify-center items-start">
           <Image
@@ -469,6 +492,8 @@ export const Hero = () => {
             height={600}
             alt="chmury"
             priority
+            quality={60}
+            sizes="(max-width: 768px) 800vw, 300vw"
           />
         </div>
         <div className="w-full h-full relative flex justify-center items-start">
@@ -479,6 +504,8 @@ export const Hero = () => {
             height={600}
             alt="chmury"
             priority
+            quality={60}
+            sizes="(max-width: 768px) 800vw, 300vw"
           />
         </div>
       </div>
@@ -493,6 +520,8 @@ export const Hero = () => {
           height={1080}
           alt="okno"
           priority
+          quality={85}
+          sizes="100vw"
         />
       </div>
       <div
@@ -507,6 +536,8 @@ export const Hero = () => {
           height={1080}
           alt="lewe skrzydło"
           priority
+          quality={85}
+          sizes="100vw"
         />
       </div>
       <div
@@ -521,6 +552,8 @@ export const Hero = () => {
           height={1080}
           alt="prawe skrzydło"
           priority
+          quality={85}
+          sizes="100vw"
         />
       </div>
       <div
