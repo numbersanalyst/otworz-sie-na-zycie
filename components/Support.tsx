@@ -55,6 +55,7 @@ const supportItems = [
     description:
       "Pomniki oraz Groby Dzieci Utraconych w całej Polsce – przestrzenie wspólnotowej żałoby, przywracające godność każdemu życiu.",
     icon: <Flame className="w-8 h-8 stroke-[1px]" />,
+    href: "https://pro-life.pl/kiedy-grob-staje-sie-znakiem-milosci/",
   },
 ];
 
