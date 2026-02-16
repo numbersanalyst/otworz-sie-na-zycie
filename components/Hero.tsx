@@ -93,17 +93,13 @@ export const Hero = () => {
       const introText = introTextRef.current!;
       const quoteWords = quoteWordsRef.current!;
 
-      const isMobile = window.innerWidth < 768;
-
       const contentHeight = heroCopyInner.offsetHeight;
       const pinDistance = contentHeight * 2 + window.innerHeight;
 
       const quoteStart = 0.55;
-      const quoteRange = 0.45;
 
       const skyMoveDistance = skyContainer.offsetHeight - window.innerHeight;
 
-      // Reset ustawień początkowych
       gsap.set(heroCopy, {
         opacity: 1,
         visibility: "visible",
@@ -273,7 +269,6 @@ export const Hero = () => {
           });
 
           // --- 4. HERO COPY ---
-          // --- 4. HERO COPY ---
           if (progress > quoteStart) {
             const scrollRange = 1.0 - quoteStart;
             const scrollProgress = (progress - quoteStart) / scrollRange;
@@ -356,9 +351,10 @@ export const Hero = () => {
           height={3500}
           alt="niebo"
           priority
+          sizes="100vw"
+          placeholder="blur"
         />
       </div>
-
       {/* INTRO WORDS */}
       <div
         ref={introWord1Ref}

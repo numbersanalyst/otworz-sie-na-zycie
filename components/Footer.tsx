@@ -80,7 +80,7 @@ export const Footer = () => {
               alt="Logo Stowarzyszenia Obrońców Życia Człowieka"
               width={300}
               height={100}
-              className="opacity-90 hover:opacity-100 transition-opacity duration-300"
+              className="h-[70px] md:h-[100px] w-auto opacity-90 hover:opacity-100 transition-opacity duration-300"
             />
           </div>
         </a>

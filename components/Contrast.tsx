@@ -93,7 +93,7 @@ export const Contrast = () => {
               <h4 className="text-xl font-serif mb-3 text-zinc-200">
                 {issue.title}
               </h4>
-              <p className="text-sm text-zinc-500 font-light leading-relaxed">
+              <p className="text-sm text-zinc-400 font-light leading-relaxed">
                 {issue.desc}
               </p>
             </div>

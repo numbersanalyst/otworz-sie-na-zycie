@@ -109,6 +109,7 @@ export const SupportPillars = () => {
                     src={item.image}
                     alt={item.alt}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105 transition-all"
                   />
                 )}
@@ -132,6 +133,7 @@ export const SupportPillars = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-300 text-zinc-600 text-xs uppercase tracking-widest font-medium hover:bg-zinc-900 hover:text-white hover:border-zinc-900 transition-all duration-300 group"
+                    aria-label={`Zobacz więcej o: ${item.title}`}
                   >
                     Zobacz więcej
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

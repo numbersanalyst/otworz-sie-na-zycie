@@ -247,7 +247,6 @@ export const Consequences = () => {
                 <span className="font-semibold text-zinc-100 underline decoration-zinc-700/70 underline-offset-2">
                   {item.title}
                 </span>
-                <span className="text-zinc-500">· {item.source}</span>
                 <span className="text-zinc-400 italic">{item.highlight}</span>
               </a>
             ))}
@@ -310,7 +309,9 @@ export const Consequences = () => {
                       setActiveVideo(parsed);
                     }}
                     className="absolute inset-0 w-full h-full flex items-center justify-center group/play cursor-pointer"
+                    aria-label={`Odtwórz wideo: ${item.title}`}
                   >
+                    {" "}
                     <div className="w-16 h-16 bg-emerald-500/95 hover:bg-emerald-500 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl shadow-black/50 group-hover/play:shadow-emerald-500/30 group-hover/play:scale-110 transition-all duration-300 border-4 border-white/30">
                       <Play className="w-7 h-7 text-black ml-1" />
                     </div>
@@ -374,7 +375,7 @@ export const Consequences = () => {
             </div>
           </div>
         )}
-        <p className="text-center text-xs mt-8 text-zinc-500 mb-8">
+        <p className="text-center text-xs mt-8 text-zinc-400 mb-8">
           Świadectwa w języku angielskim. Można włączyć napisy po Polsku.
         </p>
 

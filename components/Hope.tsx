@@ -173,6 +173,7 @@ export const Hope = () => {
                     src={story.thumbnail}
                     alt={story.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                     className="object-cover brightness-90 group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
                     quality={70}
                   />
@@ -187,6 +188,7 @@ export const Hope = () => {
                       setActiveVideo(parsed);
                     }}
                     className="absolute inset-0 w-full h-full flex items-center justify-center group/play cursor-pointer"
+                    aria-label={`Odtwórz wideo: ${story.title}`}
                   >
                     <div className="w-16 h-16 bg-amber-500/95 hover:bg-amber-500 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl shadow-black/50 group-hover/play:shadow-amber-500/30 group-hover/play:scale-110 transition-all duration-300 border-4 border-white/30">
                       <Play className="w-7 h-7 text-black ml-1" />
@@ -233,6 +235,7 @@ export const Hope = () => {
               <button
                 onClick={closeVideo}
                 className="absolute top-3 right-3 md:top-6 md:right-6 z-20 w-10 h-10 md:w-12 md:h-12 bg-zinc-900/95 hover:bg-zinc-800 text-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-2xl hover:scale-110 transition-all touch-manipulation"
+                aria-label="Zamknij wideo"
               >
                 <X className="w-5 h-5 md:w-6 md:h-6" />
               </button>
@@ -248,7 +251,7 @@ export const Hope = () => {
           </div>
         )}
 
-        <p className="text-center text-xs mt-8 text-zinc-500">
+        <p className="text-center text-xs mt-8 text-zinc-400">
           Filmy w języku polskim. Możesz włączyć napisy jeśli potrzebujesz.
         </p>
 

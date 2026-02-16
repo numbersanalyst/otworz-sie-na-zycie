@@ -141,6 +141,9 @@ export const Support = () => {
               <Wrapper
                 key={index}
                 {...props}
+                aria-label={
+                  isLink ? `Dowiedz się więcej o: ${item.title}` : undefined
+                }
                 className={`group p-8 border border-white/5 bg-white/[0.02] backdrop-blur-sm 
                     ${isLink ? "hover:bg-white/[0.05] hover:border-white/20 cursor-pointer" : ""} 
                     transition-all duration-500 rounded-sm relative overflow-hidden flex flex-col`}
