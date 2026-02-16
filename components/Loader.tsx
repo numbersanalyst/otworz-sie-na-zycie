@@ -17,6 +17,8 @@ export const Loader = ({ onComplete }: LoaderProps) => {
   useEffect(() => {
     if (!textRef.current || !containerRef.current) return;
 
+    const isMobile = window.innerWidth < 768;
+
     gsap.set(textRef.current, { visibility: "visible" });
 
     const chars = textRef.current.querySelectorAll(".char");
@@ -28,6 +30,7 @@ export const Loader = ({ onComplete }: LoaderProps) => {
           opacity: 0,
           duration: 0.6,
           ease: "power2.inOut",
+          force3D: true,
           onComplete: () => {
             setIsVisible(false);
             onComplete?.();
@@ -39,20 +42,22 @@ export const Loader = ({ onComplete }: LoaderProps) => {
     tl.from(chars, {
       opacity: 0,
       y: 30,
-      filter: "blur(10px)",
+      filter: isMobile ? "none" : "blur(10px)",
       stagger: 0.04,
       duration: 0.6,
       ease: "power3.out",
+      force3D: true,
     });
 
     tl.to(chars, {
       opacity: 0,
       y: -20,
-      filter: "blur(5px)",
+      filter: isMobile ? "none" : "blur(5px)",
       stagger: 0.02,
       duration: 0.4,
       ease: "power2.in",
       delay: 0.5,
+      force3D: true,
     });
 
     return () => {
