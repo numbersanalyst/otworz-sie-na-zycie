@@ -547,7 +547,7 @@ export const Hero = () => {
               To co piękne <br /> jest w nas
             </h1>
             <hr />
-            <div className="flex justify-between items-center gap-x-5">
+            <div className="flex justify-between items-center gap-x-16 md:gap-x-5">
               <p className="font-serif font-light text-xl flex justify-end items-center gap-x-2">
                 <ArrowDown className="animate-bounce" width={20} height={20} />
                 Przewiń
