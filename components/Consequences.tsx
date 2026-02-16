@@ -233,7 +233,7 @@ export const Consequences = () => {
           <div className="absolute inset-y-0 left-0 w-16 bg-linear-to-r from-zinc-950 to-transparent pointer-events-none z-10" />
           <div className="absolute inset-y-0 right-0 w-16 bg-linear-to-l from-zinc-950 to-transparent pointer-events-none z-10" />
 
-          <div className="flex gap-8 py-3 animate-[marquee_40s_linear_infinite]">
+          <div className="flex gap-8 py-3 animate-[marquee_10s_linear_infinite] md:animate-[marquee_40s_linear_infinite]">
             {[...studyHeadlines, ...studyHeadlines].map((item, i) => (
               <a
                 key={i}
