@@ -109,7 +109,7 @@ export const Support = () => {
     >
       <div className="max-w-7xl mx-auto w-full">
         <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-zinc-500 text-sm uppercase tracking-[0.3em] mb-4">
+          <h2 className="text-zinc-500 text-xs md:text-sm uppercase tracking-[0.4em] mb-8 font-medium">
             Wiecej wsparcia
           </h2>
           <h3 className="text-4xl md:text-6xl font-serif font-light text-white italic mb-6">

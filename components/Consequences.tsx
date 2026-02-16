@@ -215,7 +215,7 @@ export const Consequences = () => {
       <div className="max-w-6xl mx-auto">
         {/* Nagłówek */}
         <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-zinc-500 text-sm uppercase tracking-[0.3em] mb-4">
+          <h2 className="text-zinc-500 text-xs md:text-sm uppercase tracking-[0.4em] mb-8 font-medium">
             Konsekwencje
           </h2>
           <h3 className="text-4xl md:text-6xl font-serif font-light italic mb-6">

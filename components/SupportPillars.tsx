@@ -81,10 +81,10 @@ export const SupportPillars = () => {
       className="bg-zinc-50 py-24 md:py-36 px-6 overflow-hidden"
     >
       <div className="max-w-3xl mx-auto text-center mb-24">
-        <h2 className="text-zinc-500 text-sm uppercase tracking-[0.3em] mb-4 font-medium">
+        <h2 className="text-zinc-600 text-xs md:text-sm uppercase tracking-[0.4em] mb-8 font-medium">
           Realne Wsparcie
         </h2>
-        <h3 className="text-4xl md:text-5xl font-serif text-zinc-800">
+        <h3 className="text-4xl md:text-6xl font-serif text-zinc-900">
           Tu rodzi się nadzieja
         </h3>
         <p className="mt-6 text-zinc-600 text-lg font-light leading-relaxed">

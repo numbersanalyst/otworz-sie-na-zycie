@@ -67,10 +67,10 @@ export const Contrast = () => {
     >
       <div className="max-w-6xl mx-auto">
         <div ref={textRef} className="text-center mb-24">
-          <h2 className="text-zinc-500 text-sm uppercase tracking-[0.3em] mb-4">
+          <h2 className="text-zinc-500 text-xs md:text-sm uppercase tracking-[0.4em] mb-8 font-medium">
             Pytanie o jutro
           </h2>
-          <h3 className="text-5xl md:text-7xl font-serif font-light mb-8 italic">
+          <h3 className="text-4xl md:text-6xl font-serif font-light mb-8 italic">
             Czy to prawda? <br /> Dokąd zmierza świat?
           </h3>
         </div>

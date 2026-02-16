@@ -139,7 +139,7 @@ export const Hope = () => {
         {/* Nagłówek */}
         <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-20">
           <Heart className="w-12 h-12 text-amber-500 mx-auto mb-6 animate-pulse" />
-          <h2 className="text-zinc-500 text-sm uppercase tracking-[0.3em] mb-4">
+          <h2 className="text-zinc-500 text-xs md:text-sm uppercase tracking-[0.4em] mb-8 font-medium">
             Nadzieja
           </h2>
           <h3 className="text-4xl md:text-6xl font-serif font-light italic mb-6">
