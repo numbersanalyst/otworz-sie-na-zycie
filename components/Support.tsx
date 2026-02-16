@@ -28,14 +28,14 @@ const supportItems = [
     description:
       "Bezpieczny, anonimowy punkt, w którym matka może pozostawić noworodka, gwarantując mu bezpieczną przyszłość.",
     icon: <Baby className="w-8 h-8 stroke-[1px]" />,
-    href: "https://caritas.pl/okna-zycia/",
+    href: "https://pro-life.pl/okna-zycia/",
   },
   {
     title: "Dom Samotnej Matki",
     description:
       "Azyl dla kobiet w ciąży i matek z dziećmi, które znalazły się w trudnej sytuacji życiowej lub materialnej.",
     icon: <Home className="w-8 h-8 stroke-[1px]" />,
-    href: "https://caritas.pl/domy-samotnej-matki/",
+    href: "https://pro-life.pl/domy-samotnej-matki/",
   },
   {
     title: "Telefony Zaufania",
