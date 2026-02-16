@@ -45,10 +45,11 @@ const supportItems = [
     href: "https://pro-life.pl/telefon/",
   },
   {
-    title: "Moc modlitwy",
+    title: "Modlitwa za życie",
     description:
-      "Zakony kontemplacyjne, które otaczają modlitwą pamięć o dzieciach utraconych.",
+      "Krucjata Modlitwy, która od 45 lat nieprzerwanie jednoczy tysiące osób w intencji ochrony najsłabszych i wsparcia dla rodziców.",
     icon: <Cross className="w-8 h-8 stroke-[1px]" />,
+    href: "https://pro-life.pl/modlitwa-ktora-ratuje-zycie/",
   },
   {
     title: "Pomniki nienarodzonych dzieci",
