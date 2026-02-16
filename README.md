@@ -1,3 +1,7 @@
+<h1 align="center">
+  <a href="https://otworzsienazycie.pl/" target="_blank"><img src="public/og-image.png" alt="logo Otwórz się na życie"></a>
+</h1>
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
