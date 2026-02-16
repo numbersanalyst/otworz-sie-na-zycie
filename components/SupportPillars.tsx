@@ -4,12 +4,10 @@ import { useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import oknoZycia from "@/assets/projekt-okno-zycia.jpg";
 import hospicjumPerinatalne from "@/assets/hospicjum-perinatalne.jpg";
 import broniszewice from "@/assets/dom-broniszewice.jpg";
-import domSamotnejMatki from "@/assets/dom-samotnej-matki.jpg";
 import candle from "@/assets/candle.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -25,7 +23,7 @@ const supportData = [
     href: "https://www.facebook.com/dpsbroniszewice/",
   },
   {
-    title: "Hospicjum Perinatalne",
+    title: "Hospicja Perinatalne",
     description:
       "Gdy diagnoza prenatalna jest najtrudniejszą z możliwych, rodzice nie zostają sami. Hospicja oferują wsparcie medyczne i psychologiczne, pozwalając na godne powitanie i pożegnanie dziecka w atmosferze miłości.",
     image: hospicjumPerinatalne,

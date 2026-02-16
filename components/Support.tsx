@@ -149,7 +149,7 @@ export const Support = () => {
                     transition-all duration-500 rounded-sm relative overflow-hidden flex flex-col`}
               >
                 {isLink && (
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
+                  <div className="md:block hidden absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
                     <ExternalLink className="w-5 h-5 text-zinc-500 group-hover:text-white" />
                   </div>
                 )}
