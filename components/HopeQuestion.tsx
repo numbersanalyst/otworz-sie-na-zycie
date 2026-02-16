@@ -44,7 +44,7 @@ export const HopeQuestion = () => {
               pokój w sercu.
             </span>
           </h3>
-          <p className="mt-12 text-zinc-800 max-w-2xl mx-auto font-light leading-relaxed text-lg italic">
+          <p className="mt-12 text-zinc-800 max-w-2xl mx-auto font-serif font-light leading-relaxed text-lg italic">
             Nie przyszedłem bowiem po to, aby świat sądzić, ale aby świat
             zbawić. – Jan 12,47
           </p>

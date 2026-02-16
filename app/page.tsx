@@ -1,6 +1,7 @@
 import { Loader } from "@/components/Loader";
 import { Hero } from "@/components/Hero";
 import { Brochures } from "@/components/Brochures";
+import { SupportPillars } from "@/components/SupportPillars";
 import { Support } from "@/components/Support";
 import { Contrast } from "@/components/Contrast";
 import { Consequences } from "@/components/Consequences";
@@ -12,12 +13,13 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <Loader />
+      {/* <Loader /> */}
       <Hero />
       <Contrast />
       <Consequences />
       <HopeQuestion />
       <Hope />
+      <SupportPillars />
       <Support />
       <Brochures />
       <Outro />

@@ -294,8 +294,9 @@ export const Consequences = () => {
                   <Image
                     src={item.thumbnail}
                     alt={`${item.name || "świadectwo"}`}
+                    width={500}
+                    height={500}
                     quality={60}
-                    fill
                     className="w-full h-full object-cover brightness-90 group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
