@@ -65,12 +65,12 @@ export const Outro = () => {
           placeholder="blur"
           quality={60}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/50 to-zinc-950/90" />
+        <div className="absolute inset-0 bg-linear-to-t from-zinc-950/90 via-zinc-950/50 to-zinc-950/90" />
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div ref={textRef}>
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light mb-8 italic leading-tight bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent drop-shadow-2xl">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light mb-8 italic leading-tight bg-linear-to-b from-white to-zinc-400 bg-clip-text text-transparent drop-shadow-2xl">
             Nie pozostań <br /> obojętny.
           </h2>
         </div>

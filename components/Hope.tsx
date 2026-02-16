@@ -165,7 +165,7 @@ export const Hope = () => {
           {hopeStories.map((story, i) => (
             <div
               key={i}
-              className="hope-card group border border-amber-900/40 bg-gradient-to-br from-zinc-900/70 to-zinc-950/80 backdrop-blur-md overflow-hidden rounded-xl hover:border-amber-500/50 hover:shadow-amber-500/10 hover:shadow-xl transition-all duration-500 h-fit"
+              className="hope-card group border border-amber-900/40 bg-linear-to-br from-zinc-900/70 to-zinc-950/80 backdrop-blur-md overflow-hidden rounded-xl hover:border-amber-500/50 hover:shadow-amber-500/10 hover:shadow-xl transition-all duration-500 h-fit"
             >
               {story.thumbnail && (
                 <div className="relative w-full aspect-video overflow-hidden">
@@ -177,7 +177,7 @@ export const Hope = () => {
                     className="object-cover brightness-90 group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
                     quality={70}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-linear-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
 
                   <button
                     onClick={() => {
@@ -225,7 +225,7 @@ export const Hope = () => {
         {/* Modal YouTube */}
         {activeVideo && (
           <div
-            className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-6"
+            className="fixed inset-0 z-9999 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-6"
             onClick={closeVideo}
           >
             <div

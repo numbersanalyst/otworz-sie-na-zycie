@@ -53,7 +53,7 @@ const supportItems = [
   {
     title: "Pomniki nienarodzonych dzieci",
     description:
-      "Pomniki i grobowce dzieci nienarodzonych w całej Polsce – przestrzenie wspólnotowej żałoby i modlitwy.",
+      "Pomniki oraz Groby Dzieci Utraconych w całej Polsce – przestrzenie wspólnotowej żałoby, przywracające godność każdemu życiu.",
     icon: <Flame className="w-8 h-8 stroke-[1px]" />,
   },
 ];
@@ -144,8 +144,8 @@ export const Support = () => {
                 aria-label={
                   isLink ? `Dowiedz się więcej o: ${item.title}` : undefined
                 }
-                className={`group p-8 border border-white/5 bg-white/[0.02] backdrop-blur-sm 
-                    ${isLink ? "hover:bg-white/[0.05] hover:border-white/20 cursor-pointer" : ""} 
+                className={`group p-8 border border-white/5 bg-white/2 backdrop-blur-sm 
+                    ${isLink ? "hover:bg-white/5 hover:border-white/20 cursor-pointer" : ""} 
                     transition-all duration-500 rounded-sm relative overflow-hidden flex flex-col`}
               >
                 {isLink && (
@@ -164,7 +164,7 @@ export const Support = () => {
                   {item.title}
                 </h3>
 
-                <p className="text-zinc-400 font-light leading-relaxed text-sm flex-grow">
+                <p className="text-zinc-400 font-light leading-relaxed text-sm grow">
                   {item.description}
                 </p>
 

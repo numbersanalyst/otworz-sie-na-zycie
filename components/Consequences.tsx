@@ -229,8 +229,8 @@ export const Consequences = () => {
         </div>
         {/* Pasek nagłówków badań */}
         <div className="relative overflow-hidden border border-zinc-800/70 bg-zinc-900/60 rounded-md mb-16">
-          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-zinc-950 to-transparent pointer-events-none z-10" />
-          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-zinc-950 to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-y-0 left-0 w-16 bg-linear-to-r from-zinc-950 to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-y-0 right-0 w-16 bg-linear-to-l from-zinc-950 to-transparent pointer-events-none z-10" />
 
           <div className="flex gap-8 py-3 animate-[marquee_40s_linear_infinite]">
             {[...studyHeadlines, ...studyHeadlines].map((item, i) => (
@@ -271,7 +271,7 @@ export const Consequences = () => {
               <p className="text-sm text-zinc-400 leading-relaxed">
                 {item.desc}
               </p>
-              <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-zinc-700/60 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-zinc-700/60 to-transparent" />
             </div>
           ))}
         </div>
@@ -298,7 +298,7 @@ export const Consequences = () => {
                     quality={60}
                     className="w-full h-full object-cover brightness-90 group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-linear-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
 
                   <button
                     onClick={() => {
@@ -351,7 +351,7 @@ export const Consequences = () => {
         {/* Modal YouTube */}
         {activeVideo && (
           <div
-            className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-6"
+            className="fixed inset-0 z-9999 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-6"
             onClick={closeVideo}
           >
             <div
