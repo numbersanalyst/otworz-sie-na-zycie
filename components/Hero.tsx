@@ -96,20 +96,18 @@ export const Hero = () => {
       const isMobile = window.innerWidth < 768;
 
       const contentHeight = heroCopyInner.offsetHeight;
-      const pinDistance = isMobile
-        ? contentHeight * 2 + window.innerHeight
-        : window.innerHeight * 2.5;
+      const pinDistance = contentHeight * 2 + window.innerHeight;
 
       const quoteStart = 0.55;
-      const quoteRange = isMobile ? 0.45 : 0.4;
+      const quoteRange = 0.45;
 
       const skyMoveDistance = skyContainer.offsetHeight - window.innerHeight;
 
       // Reset ustawień początkowych
       gsap.set(heroCopy, {
-        opacity: isMobile ? 1 : 0,
-        visibility: isMobile ? "visible" : "hidden",
-        y: isMobile ? window.innerHeight : 0,
+        opacity: 1,
+        visibility: "visible",
+        y: window.innerHeight,
       });
 
       gsap.set([introWord1, introWord2, introWord3], {
@@ -126,7 +124,7 @@ export const Hero = () => {
 
       quoteWords.forEach((word) => {
         gsap.set(word, {
-          color: isMobile ? "rgba(30, 41, 59, 0.95)" : "#ffffff",
+          color: "#ffffff",
           opacity: 1,
         });
       });
@@ -275,78 +273,61 @@ export const Hero = () => {
           });
 
           // --- 4. HERO COPY ---
+          // --- 4. HERO COPY ---
           if (progress > quoteStart) {
-            if (isMobileUpdate) {
-              // Mobile logic
-              const scrollRange = 1.0 - quoteStart;
-              const scrollProgress = (progress - quoteStart) / scrollRange;
-              const currentY =
-                window.innerHeight +
-                scrollProgress * (endPositionMobile - window.innerHeight);
+            const scrollRange = 1.0 - quoteStart;
+            const scrollProgress = (progress - quoteStart) / scrollRange;
+            const currentY =
+              window.innerHeight +
+              scrollProgress * (endPositionMobile - window.innerHeight);
 
-              gsap.set(heroCopy, {
-                visibility: "visible",
-                opacity: 1,
-                y: currentY,
-              });
-              quoteWords.forEach((word) => {
+            gsap.set(heroCopy, {
+              visibility: "visible",
+              opacity: 1,
+              y: currentY,
+            });
+
+            const colorProgress = isMobileUpdate
+              ? Math.min(1.0, scrollProgress * 2.5)
+              : scrollProgress;
+
+            quoteWords.forEach((word, index) => {
+              const wordStart = index / quoteWords.length;
+              const wordEnd = (index + 1) / quoteWords.length;
+              const slate800 = { r: 30, g: 41, b: 59 };
+              const white = { r: 255, g: 255, b: 255 };
+
+              if (colorProgress >= wordEnd) {
                 gsap.set(word, {
-                  color: "rgba(30, 41, 59, 0.95)",
+                  color: "rgba(30, 41, 59, 0.9)",
                   opacity: 1,
                 });
-              });
-            } else {
-              // Desktop logic
-              const qProgress = Math.min(
-                1,
-                Math.max(0, (progress - quoteStart) / quoteRange),
-              );
-              const translateY = (0.5 - qProgress) * window.innerHeight * 0.8;
-
-              gsap.set(heroCopy, {
-                y: translateY,
-                opacity: qProgress < 0.1 ? qProgress / 0.1 : 1,
-                visibility: "visible",
-              });
-
-              quoteWords.forEach((word, index) => {
-                const wordStart = index / quoteWords.length;
-                const wordEnd = (index + 1) / quoteWords.length;
-                const slate800 = { r: 30, g: 41, b: 59 };
-                const white = { r: 255, g: 255, b: 255 };
-
-                if (qProgress >= wordEnd) {
-                  gsap.set(word, {
-                    color: "rgba(30, 41, 59, 0.9)",
-                    opacity: 1,
-                  });
-                } else if (qProgress >= wordStart) {
-                  const wordProgress =
-                    (qProgress - wordStart) / (wordEnd - wordStart);
-                  const r = Math.round(
-                    white.r + (slate800.r - white.r) * wordProgress,
-                  );
-                  const g = Math.round(
-                    white.g + (slate800.g - white.g) * wordProgress,
-                  );
-                  const b = Math.round(
-                    white.b + (slate800.b - white.b) * wordProgress,
-                  );
-                  const a = 1 - (1 - 0.9) * wordProgress;
-                  gsap.set(word, {
-                    color: `rgba(${r}, ${g}, ${b}, ${a})`,
-                    opacity: 1,
-                  });
-                } else {
-                  gsap.set(word, { color: "#ffffff", opacity: 1 });
-                }
-              });
-            }
+              } else if (colorProgress >= wordStart) {
+                const wordProgress =
+                  (colorProgress - wordStart) / (wordEnd - wordStart);
+                const r = Math.round(
+                  white.r + (slate800.r - white.r) * wordProgress,
+                );
+                const g = Math.round(
+                  white.g + (slate800.g - white.g) * wordProgress,
+                );
+                const b = Math.round(
+                  white.b + (slate800.b - white.b) * wordProgress,
+                );
+                const a = 1 - (1 - 0.9) * wordProgress;
+                gsap.set(word, {
+                  color: `rgba(${r}, ${g}, ${b}, ${a})`,
+                  opacity: 1,
+                });
+              } else {
+                gsap.set(word, { color: "#ffffff", opacity: 1 });
+              }
+            });
           } else {
             gsap.set(heroCopy, {
-              visibility: isMobileUpdate ? "visible" : "hidden",
-              y: isMobileUpdate ? window.innerHeight : 0,
-              opacity: isMobileUpdate ? 1 : 0,
+              visibility: "visible",
+              y: window.innerHeight,
+              opacity: 1,
             });
           }
         },
@@ -423,17 +404,14 @@ export const Hero = () => {
 
       <div
         ref={heroCopyRef}
-        className="absolute top-0 left-0 w-full flex flex-col z-20 min-h-0 h-screen items-center justify-start md:justify-center p-0 md:p-12"
+        className="absolute top-0 left-0 w-full flex flex-col z-20 min-h-0 h-screen items-center justify-start p-0 md:p-12"
       >
         <div
           ref={heroCopyInnerRef}
-          className="w-full flex flex-col items-center pt-8 md:pt-0 pb-32 md:pb-0 px-4 md:px-0"
+          className="w-full flex flex-col items-center pt-8 pb-32 px-4 md:px-0"
         >
           <div className="relative flex flex-col md:flex-row md:items-start items-center gap-3 sm:gap-4 md:gap-16 mx-auto max-w-6xl">
-            {/* Tło tylko dla mobile */}
-            <div className="md:hidden absolute inset-0 -m-4 bg-white/40 blur-xl rounded-full scale-110 -z-10" />
-            {/* Tło dla desktopu */}
-            <div className="hidden md:block absolute top-0 left-0 w-full h-full backdrop-blur-sm radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%) rounded-4xl" />
+            <div className="absolute inset-0 -m-4 bg-white/40 blur-xl rounded-full scale-110 -z-10" />
 
             <Image
               src={jp2}
