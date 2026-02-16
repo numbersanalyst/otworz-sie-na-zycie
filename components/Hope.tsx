@@ -4,9 +4,10 @@ import { useRef, useLayoutEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image, { StaticImageData } from "next/image";
-import { Play, X, Heart } from "lucide-react";
+import { Play, Heart } from "lucide-react";
 
 import bocelliThumb from "@/assets/thumbnail4.jpg";
+import { VideoModal } from "./VideoModal";
 import dominikThumb from "@/assets/thumbnail5.png";
 import oknoThumb from "@/assets/thumbnail6.png";
 
@@ -224,31 +225,12 @@ export const Hope = () => {
 
         {/* Modal YouTube */}
         {activeVideo && (
-          <div
-            className="fixed inset-0 z-9999 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-6"
-            onClick={closeVideo}
-          >
-            <div
-              className="relative w-full aspect-video max-w-5xl bg-zinc-900 rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={closeVideo}
-                className="absolute top-3 right-3 md:top-6 md:right-6 z-20 w-10 h-10 md:w-12 md:h-12 bg-zinc-900/95 hover:bg-zinc-800 text-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-2xl hover:scale-110 transition-all touch-manipulation"
-                aria-label="Zamknij wideo"
-              >
-                <X className="w-5 h-5 md:w-6 md:h-6" />
-              </button>
-
-              <iframe
-                src={`https://www.youtube.com/embed/${activeVideo.videoId}?autoplay=1&start=${activeVideo.startSeconds}&rel=0&modestbranding=1&playsinline=1`}
-                title="Historia nadziei"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              />
-            </div>
-          </div>
+          <VideoModal
+            videoId={activeVideo.videoId}
+            startSeconds={activeVideo.startSeconds}
+            title="Historia nadziei"
+            onClose={closeVideo}
+          />
         )}
 
         <p className="text-center text-xs mt-8 text-zinc-400">
