@@ -129,40 +129,22 @@ export const Support = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
           {supportItems.map((item, index) => {
-            const Wrapper = item.href ? "a" : "div";
-            const props = item.href
-              ? {
-                  href: item.href,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                }
-              : {};
-            const isLink = !!item.href;
-
             return (
-              <Wrapper
+              <a
                 key={index}
-                {...props}
-                aria-label={
-                  isLink ? `Dowiedz się więcej o: ${item.title}` : undefined
-                }
-                className={`group p-8 border border-white/5 bg-white/2 backdrop-blur-sm 
-                    ${isLink ? "hover:bg-white/5 hover:border-white/20 cursor-pointer" : ""} 
-                    transition-all duration-500 rounded-sm relative overflow-hidden flex flex-col`}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Dowiedz się więcej o: ${item.title}`}
+                className="group p-8 border border-white/5 bg-white/2 backdrop-blur-sm 
+                    hover:bg-white/5 hover:border-white/20 cursor-pointer 
+                    transition-all duration-500 rounded-sm relative overflow-hidden flex flex-col"
               >
-                {isLink && (
-                  <div className="md:block hidden absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
-                    <ExternalLink className="w-5 h-5 text-zinc-500 group-hover:text-white" />
-                  </div>
-                )}
-
                 <div className="text-zinc-500 group-hover:text-white transition-colors duration-500 mb-6">
                   {item.icon}
                 </div>
 
-                <h3
-                  className={`text-2xl font-serif font-light text-white mb-4 transition-transform duration-300 ${isLink ? "group-hover:translate-x-1" : ""}`}
-                >
+                <h3 className="text-2xl font-serif font-light text-white mb-4 transition-transform duration-300 group-hover:translate-x-1">
                   {item.title}
                 </h3>
 
@@ -170,14 +152,12 @@ export const Support = () => {
                   {item.description}
                 </p>
 
-                {isLink && (
-                  <div className="mt-4 pt-4 border-t border-white/5 md:hidden">
-                    <span className="text-xs uppercase tracking-widest text-zinc-500 flex items-center gap-2">
-                      Dowiedz się więcej <ExternalLink className="w-3 h-3" />
-                    </span>
-                  </div>
-                )}
-              </Wrapper>
+                <div className="mt-4 pt-4 border-t border-white/5">
+                  <span className="text-xs uppercase tracking-widest text-zinc-500 flex items-center gap-2">
+                    Dowiedz się więcej <ExternalLink className="w-3 h-3" />
+                  </span>
+                </div>
+              </a>
             );
           })}
         </div>
