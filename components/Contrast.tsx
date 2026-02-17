@@ -88,7 +88,9 @@ export const Contrast = () => {
                   alt={issue.title}
                   width={400}
                   height={160}
-                  quality={75}
+                  sizes="(max-width: 640px) 170px, (max-width: 768px) 200px, 350px"
+                  quality={65}
+                  loading="lazy"
                   className="w-full h-full object-cover object-[50%_20%]"
                 />
               </div>

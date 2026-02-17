@@ -371,7 +371,7 @@ export const Hero = () => {
           height={3500}
           alt="niebo"
           priority
-          quality={70}
+          quality={60}
           sizes="100vw"
           placeholder="blur"
         />
@@ -435,8 +435,9 @@ export const Hero = () => {
               alt="Jan Paweł II"
               width={280}
               height={460}
-              quality={85}
-              sizes="(max-width: 768px) 260px, 280px"
+              quality={70}
+              loading="lazy"
+              sizes="(max-width: 768px) 150px, 280px"
               className="object-contain opacity-90 md:opacity-75 w-[260px] md:w-[240px] lg:w-[280px] shrink-0"
             />
 
@@ -493,7 +494,7 @@ export const Hero = () => {
             alt="chmury"
             priority
             quality={60}
-            sizes="(max-width: 768px) 800vw, 300vw"
+            sizes="(max-width: 768px) 100vw, 300vw"
           />
         </div>
         <div className="w-full h-full relative flex justify-center items-start">
@@ -505,7 +506,7 @@ export const Hero = () => {
             alt="chmury"
             priority
             quality={60}
-            sizes="(max-width: 768px) 800vw, 300vw"
+            sizes="(max-width: 768px) 100vw, 300vw"
           />
         </div>
       </div>
