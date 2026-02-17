@@ -82,10 +82,12 @@ export const Contrast = () => {
               key={i}
               className={`p-8 border border-zinc-800 bg-zinc-950/50 backdrop-blur-md ${issue.pos}`}
             >
-              <div className="h-40 mb-6 flex items-center justify-center font-serif italic">
+              <div className="relative h-40 mb-6 overflow-hidden">
                 <Image
                   src={issue.photo}
                   alt={issue.title}
+                  width={400}
+                  height={160}
                   quality={75}
                   className="w-full h-full object-cover object-[50%_20%]"
                 />

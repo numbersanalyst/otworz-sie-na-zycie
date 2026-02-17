@@ -56,6 +56,7 @@ export const SupportPillars = () => {
           y: 0,
           duration: 1,
           ease: "power3.out",
+          force3D: true,
           scrollTrigger: {
             trigger: block,
             start: "top 85%",
@@ -101,14 +102,15 @@ export const SupportPillars = () => {
             } items-center gap-12 md:gap-24`}
           >
             <div className="w-full md:w-1/2">
-              <div className="relative aspect-4/3 w-full rounded-none overflow-hidden shadow-xl bg-zinc-200 border border-zinc-200 group">
+              <div className="relative aspect-4/3 w-full overflow-hidden shadow-xl bg-zinc-200 border border-zinc-200 group">
                 {item.image && (
                   <Image
                     src={item.image}
                     alt={item.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    width={800}
+                    height={600}
+                    quality={70}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 )}
               </div>

@@ -8,8 +8,8 @@ import { Play, Heart } from "lucide-react";
 
 import bocelliThumb from "@/assets/thumbnail4.jpg";
 import { VideoModal } from "./VideoModal";
-import dominikThumb from "@/assets/thumbnail5.png";
-import oknoThumb from "@/assets/thumbnail6.png";
+import dominikThumb from "@/assets/thumbnail5.jpg";
+import oknoThumb from "@/assets/thumbnail6.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -172,11 +172,11 @@ export const Hope = () => {
                 <div className="relative w-full aspect-video overflow-hidden">
                   <Image
                     src={story.thumbnail}
-                    alt={story.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
-                    className="object-cover brightness-90 group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
-                    quality={70}
+                    alt={`${story.name || "świadectwo"}`}
+                    width={500}
+                    height={500}
+                    quality={60}
+                    className="w-full h-full object-cover brightness-90 group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
 

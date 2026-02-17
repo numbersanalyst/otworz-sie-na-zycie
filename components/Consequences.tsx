@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image, { StaticImageData } from "next/image";
 import thumbnail1 from "@/assets/thumbnail1.jpg";
 import thumbnail2 from "@/assets/thumbnail2.png";
-import thumbnail3 from "@/assets/thumbnail3.png";
+import thumbnail3 from "@/assets/thumbnail3.jpg";
 import { Play } from "lucide-react";
 import { VideoModal } from "./VideoModal";
 
