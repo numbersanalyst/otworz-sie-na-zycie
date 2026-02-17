@@ -510,7 +510,7 @@ export const Hero = () => {
           alt="okno"
           priority
           quality={85}
-          sizes="100vw"
+          sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 100vw"
         />
       </div>
       <div
@@ -526,7 +526,7 @@ export const Hero = () => {
           alt="lewe skrzydło"
           priority
           quality={85}
-          sizes="100vw"
+          sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 100vw"
         />
       </div>
       <div
@@ -542,7 +542,7 @@ export const Hero = () => {
           alt="prawe skrzydło"
           priority
           quality={85}
-          sizes="100vw"
+          sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 100vw"
         />
       </div>
       <div
