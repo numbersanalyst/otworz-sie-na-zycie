@@ -308,30 +308,18 @@ export const Hero = () => {
             quoteWords.forEach((word, index) => {
               const wordStart = index / quoteWords.length;
               const wordEnd = (index + 1) / quoteWords.length;
-              const slate800 = { r: 30, g: 41, b: 59 };
-              const white = { r: 255, g: 255, b: 255 };
 
               if (colorProgress >= wordEnd) {
                 gsap.set(word, {
-                  color: "rgba(30, 41, 59, 0.9)",
+                  color: "rgb(30, 41, 59)",
                   opacity: 1,
                 });
               } else if (colorProgress >= wordStart) {
                 const wordProgress =
                   (colorProgress - wordStart) / (wordEnd - wordStart);
-                const r = Math.round(
-                  white.r + (slate800.r - white.r) * wordProgress,
-                );
-                const g = Math.round(
-                  white.g + (slate800.g - white.g) * wordProgress,
-                );
-                const b = Math.round(
-                  white.b + (slate800.b - white.b) * wordProgress,
-                );
-                const a = 1 - (1 - 0.9) * wordProgress;
                 gsap.set(word, {
-                  color: `rgba(${r}, ${g}, ${b}, ${a})`,
-                  opacity: 1,
+                  color: "rgb(71, 85, 105)",
+                  opacity: 0.95 * wordProgress,
                 });
               } else {
                 gsap.set(word, { color: "#ffffff", opacity: 1 });
@@ -465,7 +453,7 @@ export const Hero = () => {
               {SUB_QUOTES.map(({ text, source }, i) => (
                 <blockquote
                   key={i}
-                  className="relative rounded-lg sm:rounded-xl bg-white/60 backdrop-blur-md border border-white/40 p-4 sm:p-4 md:p-6 text-left shadow-sm"
+                  className="relative rounded-lg sm:rounded-xl bg-white/60 md:backdrop-blur-md border border-white/40 p-4 sm:p-4 md:p-6 text-left shadow-sm"
                 >
                   <p className="font-serif font-light text-slate-900 text-lg md:text-2xl leading-relaxed">
                     &#x201E;{text}&#x201D;
