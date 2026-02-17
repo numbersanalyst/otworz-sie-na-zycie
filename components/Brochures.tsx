@@ -21,7 +21,7 @@ const brochures: Brochure[] = [
   },
   {
     title: "ABORCJA",
-    subtitle: "bolesna nieobecność",
+    subtitle: "Bolesna nieobecność",
     url: "https://pro-life.pl/wp-content/uploads/2023/09/biblioteczka-pro-life-03-aborcja-bolesna-nieobecnosc-wydanie-2023.pdf",
   },
   {
@@ -46,7 +46,7 @@ const brochures: Brochure[] = [
   },
   {
     title: 'Tabletka "dzień po"',
-    subtitle: "co warto wiedzieć",
+    subtitle: "Co warto wiedzieć",
     url: "https://pro-life.pl/wp-content/uploads/2025/01/ulotka-pro-life-tabletka-dzien-po-e-wydanie.pdf",
   },
 ];
