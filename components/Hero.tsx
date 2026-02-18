@@ -554,27 +554,50 @@ export const Hero = () => {
             Życie to
             <br /> najpiękniejszy dar
           </h1>
-          <p className="text-2xl font-serif font-light max-w-xl md:block hidden">
-            Każdy dzień jest zaproszeniem, by ten dar rozwijać, chronić i
-            dzielić się nim z innymi. Choć bywa trudne i pełne prób, niesie w
-            sobie sens i nadzieję.
+          <p className="text-lg md:text-2xl font-serif font-light max-w-xl md:mt-0 mt-1">
+            <span className="md:hidden">Warto je chronić i pielęgnować</span>
+            <span className="hidden md:block">
+              Każdy dzień jest zaproszeniem, by ten dar rozwijać, chronić i
+              dzielić się nim z innymi. Choć bywa trudne i pełne prób, niesie w
+              sobie sens i nadzieję.
+            </span>
           </p>
         </div>
         <div className="md:flex-1 flex flex-col md:h-full justify-between items-end text-right pointer-events-auto">
-          <p className="text-2xl font-serif font-light md:block hidden">
+          <p className="text-lg md:text-2xl font-serif font-light">
             Wartość, <br /> która nie podlega negocjacjom
           </p>
           <div className="flex flex-col gap-y-5 md:gap-y-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light">
               To co piękne <br /> jest w nas
             </h1>
-            <hr />
-            <div className="flex justify-between items-center gap-x-16 md:gap-x-5">
-              <p className="font-serif font-light text-xl flex justify-end items-center gap-x-2">
-                <ArrowDown className="animate-bounce" width={20} height={20} />
-                Przewiń
+
+            <div className="h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
+
+            <div className="relative flex justify-between items-center gap-x-8 p-4 border border-white/20 rounded-lg backdrop-blur-sm bg-white/5">
+              <div className="flex items-center gap-x-3">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-white blur-md opacity-40 animate-pulse" />
+                  <ArrowDown
+                    className="relative animate-bounce"
+                    width={28}
+                    height={28}
+                    strokeWidth={1.5}
+                  />
+                </div>
+                <div>
+                  <p className="font-serif font-light text-lg md:text-xl">
+                    Przewiń
+                  </p>
+                  <p className="text-xs text-white/60 font-light">
+                    Zobacz więcej
+                  </p>
+                </div>
+              </div>
+
+              <p className="font-serif font-light text-lg md:text-xl text-white/80">
+                Poznaj prawdę
               </p>
-              <p className="font-serif font-light text-xl">Poznaj prawdę</p>
             </div>
           </div>
         </div>
