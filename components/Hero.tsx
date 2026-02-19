@@ -236,7 +236,9 @@ export const Hero = () => {
             force3D: true,
           });
           gsap.set(heroHeader, {
-            scale: windowScale + progress * 1.5,
+            scale: isMobileUpdate
+              ? windowScale + progress * 10
+              : windowScale + progress * 1.5,
             z: progress * 500,
             visibility: progress <= 0.66 ? "visible" : "hidden",
             force3D: true,
