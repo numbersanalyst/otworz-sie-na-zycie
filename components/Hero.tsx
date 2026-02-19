@@ -100,6 +100,8 @@ export const Hero = () => {
       const quoteStart = 0.55;
 
       const skyMoveDistance = skyContainer.offsetHeight - window.innerHeight;
+      const endPositionMobile = -contentHeight + window.innerHeight - 100;
+      const isMobile = windowWidth < 768;
 
       gsap.set(heroCopy, {
         opacity: 1,
@@ -122,11 +124,9 @@ export const Hero = () => {
         force3D: true,
       });
 
-      quoteWords.forEach((word) => {
-        gsap.set(word, {
-          color: "#ffffff",
-          opacity: 1,
-        });
+      gsap.set(quoteWords, {
+        color: isMobile ? "rgb(30,41,59)" : "#ffffff",
+        opacity: 1,
       });
 
       const cloudMarqueeTween = gsap.to(clouds, {
@@ -136,8 +136,6 @@ export const Hero = () => {
         repeat: -1,
         force3D: true,
       });
-
-      const endPositionMobile = -contentHeight + window.innerHeight - 100;
 
       ScrollTrigger.create({
         refreshPriority: 1,
@@ -149,7 +147,6 @@ export const Hero = () => {
         scrub: 1,
         onUpdate: (self: any) => {
           const progress = self.progress;
-          const isMobileUpdate = window.innerWidth < 768;
 
           if (progress <= 0.2) {
             const introProgress = progress / 0.2;
@@ -165,9 +162,7 @@ export const Hero = () => {
             gsap.set(introWord1, {
               opacity: w1Opacity,
               y: 30 - word1Progress * 30,
-              filter: isMobileUpdate
-                ? "none"
-                : `blur(${10 - word1Progress * 10}px)`,
+              filter: isMobile ? "none" : `blur(${10 - word1Progress * 10}px)`,
               force3D: true,
             });
             // Word 2
@@ -180,7 +175,7 @@ export const Hero = () => {
               gsap.set(introWord2, {
                 opacity: w2Opacity,
                 y: 30 - word2Progress * 30,
-                filter: isMobileUpdate
+                filter: isMobile
                   ? "none"
                   : `blur(${10 - word2Progress * 10}px)`,
                 force3D: true,
@@ -198,7 +193,7 @@ export const Hero = () => {
               gsap.set(introWord3, {
                 opacity: w3Opacity,
                 y: 30 - word3Progress * 30,
-                filter: isMobileUpdate
+                filter: isMobile
                   ? "none"
                   : `blur(${10 - word3Progress * 10}px)`,
                 force3D: true,
@@ -220,7 +215,7 @@ export const Hero = () => {
             gsap.set(introText, {
               opacity: introTextOpacity,
               y: 30 - introTextProgress * 30,
-              filter: isMobileUpdate
+              filter: isMobile
                 ? "none"
                 : `blur(${Math.max(0, 10 - introTextProgress * 15)}px)`,
               force3D: true,
@@ -235,12 +230,18 @@ export const Hero = () => {
             scale: windowScale,
             force3D: true,
           });
+
+          const headerScale = isMobile
+            ? Math.min(windowScale + progress * 2, 2.5)
+            : Math.min(windowScale + progress * 1.5, 2);
+
+          const headerZ = isMobile ? progress * 400 : progress * 300;
+          const visible = isMobile ? progress < 0.5 : true;
+
           gsap.set(heroHeader, {
-            scale: isMobileUpdate
-              ? windowScale + progress * 10
-              : windowScale + progress * 1.5,
-            z: progress * 500,
-            visibility: progress <= 0.66 ? "visible" : "hidden",
+            scale: visible ? headerScale : 1,
+            opacity: isMobile ? Math.max(0, 1 - progress * 2) : 1,
+            z: headerZ,
             force3D: true,
           });
 
@@ -304,31 +305,33 @@ export const Hero = () => {
               force3D: true,
             });
 
-            const colorProgress = isMobileUpdate
+            const colorProgress = isMobile
               ? Math.min(1.0, scrollProgress * 2.5)
               : scrollProgress;
 
-            quoteWords.forEach((word, index) => {
-              const wordStart = index / quoteWords.length;
-              const wordEnd = (index + 1) / quoteWords.length;
+            if (!isMobile) {
+              quoteWords.forEach((word, index) => {
+                const wordStart = index / quoteWords.length;
+                const wordEnd = (index + 1) / quoteWords.length;
 
-              let targetColor: string;
+                let targetColor: string;
 
-              if (colorProgress >= wordEnd) {
-                targetColor = "rgb(30,41,59)";
-              } else if (colorProgress >= wordStart) {
-                const wordProgress =
-                  (colorProgress - wordStart) / (wordEnd - wordStart);
-                const r = Math.round(255 + (30 - 255) * wordProgress);
-                const g = Math.round(255 + (41 - 255) * wordProgress);
-                const b = Math.round(255 + (59 - 255) * wordProgress);
-                targetColor = `rgb(${r},${g},${b})`;
-              } else {
-                targetColor = "rgb(255,255,255)";
-              }
+                if (colorProgress >= wordEnd) {
+                  targetColor = "rgb(30,41,59)";
+                } else if (colorProgress >= wordStart) {
+                  const wordProgress =
+                    (colorProgress - wordStart) / (wordEnd - wordStart);
+                  const r = Math.round(255 + (30 - 255) * wordProgress);
+                  const g = Math.round(255 + (41 - 255) * wordProgress);
+                  const b = Math.round(255 + (59 - 255) * wordProgress);
+                  targetColor = `rgb(${r},${g},${b})`;
+                } else {
+                  targetColor = "rgb(255,255,255)";
+                }
 
-              gsap.set(word, { color: targetColor, opacity: 1 });
-            });
+                gsap.set(word, { color: targetColor, opacity: 1 });
+              });
+            }
           } else {
             gsap.set(heroCopy, {
               visibility: "visible",
