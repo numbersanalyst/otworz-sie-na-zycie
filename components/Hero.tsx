@@ -309,21 +309,22 @@ export const Hero = () => {
               const wordStart = index / quoteWords.length;
               const wordEnd = (index + 1) / quoteWords.length;
 
+              let targetColor: string;
+
               if (colorProgress >= wordEnd) {
-                gsap.set(word, {
-                  color: "rgb(30, 41, 59)",
-                  opacity: 1,
-                });
+                targetColor = "rgb(30,41,59)";
               } else if (colorProgress >= wordStart) {
                 const wordProgress =
                   (colorProgress - wordStart) / (wordEnd - wordStart);
-                gsap.set(word, {
-                  color: "rgb(71, 85, 105)",
-                  opacity: 0.95 * wordProgress,
-                });
+                const r = Math.round(255 + (30 - 255) * wordProgress);
+                const g = Math.round(255 + (41 - 255) * wordProgress);
+                const b = Math.round(255 + (59 - 255) * wordProgress);
+                targetColor = `rgb(${r},${g},${b})`;
               } else {
-                gsap.set(word, { color: "#ffffff", opacity: 1 });
+                targetColor = "rgb(255,255,255)";
               }
+
+              gsap.set(word, { color: targetColor, opacity: 1 });
             });
           } else {
             gsap.set(heroCopy, {
@@ -549,55 +550,57 @@ export const Hero = () => {
         ref={heroHeaderRef}
         className="absolute top-0 left-0 w-full will-change-transform h-svh flex md:flex-row flex-col lg:gap-5 items-center md:justify-center justify-between p-6 md:p-12 lg:p-24 transform-3d z-30 pointer-events-none"
       >
-        <div className="md:flex-1 flex flex-col md:h-full justify-between pointer-events-auto">
-          <h1 className="text-5xl lg:text-6xl font-serif font-light">
-            Życie to
-            <br /> najpiękniejszy dar
-          </h1>
-          <p className="text-lg md:text-2xl font-serif font-light max-w-xl md:mt-0 mt-1">
-            <span className="md:hidden">Warto je chronić i pielęgnować</span>
-            <span className="hidden md:block">
-              Każdy dzień jest zaproszeniem, by ten dar rozwijać, chronić i
-              dzielić się nim z innymi. Choć bywa trudne i pełne prób, niesie w
-              sobie sens i nadzieję.
-            </span>
-          </p>
-        </div>
-        <div className="md:flex-1 flex flex-col md:h-full justify-between items-end text-right pointer-events-auto">
-          <p className="text-lg md:text-2xl font-serif font-light">
-            Wartość, <br /> która nie podlega negocjacjom
-          </p>
-          <div className="flex flex-col gap-y-5 md:gap-y-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light">
-              To co piękne <br /> jest w nas
+        <div className="w-full max-w-[1920px] mx-auto flex md:flex-row flex-col lg:gap-5 items-center md:justify-center justify-between h-full">
+          <div className="md:flex-1 flex flex-col md:h-full justify-between pointer-events-auto">
+            <h1 className="text-5xl lg:text-6xl font-serif font-light">
+              Życie to
+              <br /> najpiękniejszy dar
             </h1>
+            <p className="text-lg md:text-2xl font-serif font-light max-w-xl md:mt-0 mt-1">
+              <span className="md:hidden">Warto je chronić i pielęgnować</span>
+              <span className="hidden md:block">
+                Każdy dzień jest zaproszeniem, by ten dar rozwijać, chronić i
+                dzielić się nim z innymi. Choć bywa trudne i pełne prób, niesie
+                w sobie sens i nadzieję.
+              </span>
+            </p>
+          </div>
+          <div className="md:flex-1 flex flex-col md:h-full justify-between items-end text-right pointer-events-auto">
+            <p className="text-lg md:text-2xl font-serif font-light">
+              Wartość, <br /> która nie podlega negocjacjom
+            </p>
+            <div className="flex flex-col gap-y-5 md:gap-y-10">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light">
+                To co piękne <br /> jest w nas
+              </h1>
 
-            <div className="h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
+              <div className="h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
 
-            <div className="relative flex justify-between items-center gap-x-8 p-4 border border-white/20 rounded-lg backdrop-blur-sm bg-white/5">
-              <div className="flex items-center gap-x-3">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-white blur-md opacity-40 animate-pulse" />
-                  <ArrowDown
-                    className="relative animate-bounce"
-                    width={28}
-                    height={28}
-                    strokeWidth={1.5}
-                  />
+              <div className="relative flex justify-between items-center gap-x-8 p-4 border border-white/20 rounded-lg backdrop-blur-sm bg-white/5">
+                <div className="flex items-center gap-x-3">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-white blur-md opacity-40 animate-pulse" />
+                    <ArrowDown
+                      className="relative animate-bounce"
+                      width={28}
+                      height={28}
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                  <div>
+                    <p className="font-serif font-light text-lg md:text-xl">
+                      Przewiń
+                    </p>
+                    <p className="text-xs text-white/60 font-light">
+                      Zobacz więcej
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-serif font-light text-lg md:text-xl">
-                    Przewiń
-                  </p>
-                  <p className="text-xs text-white/60 font-light">
-                    Zobacz więcej
-                  </p>
-                </div>
+
+                <p className="font-serif font-light text-lg md:text-xl text-white/80">
+                  Poznaj prawdę
+                </p>
               </div>
-
-              <p className="font-serif font-light text-lg md:text-xl text-white/80">
-                Poznaj prawdę
-              </p>
             </div>
           </div>
         </div>
