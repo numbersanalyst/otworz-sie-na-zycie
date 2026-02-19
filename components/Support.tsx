@@ -94,7 +94,7 @@ export const Support = () => {
             ease: "power2.out",
             scrollTrigger: {
               trigger: cardsRef.current,
-              start: "top 85%",
+              start: "top 90%",
             },
           },
         );
@@ -136,9 +136,9 @@ export const Support = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Dowiedz się więcej o: ${item.title}`}
-                className="group p-8 border border-white/5 bg-white/2 backdrop-blur-sm 
+                className="group p-8 border border-white/5 bg-white/2
                     hover:bg-white/5 hover:border-white/20 cursor-pointer 
-                    transition-all duration-500 rounded-sm relative overflow-hidden flex flex-col"
+                    transition-[background-color,border-color] duration-500 rounded-sm relative overflow-hidden flex flex-col will-change-transform"
               >
                 <div className="text-zinc-500 group-hover:text-white transition-colors duration-500 mb-6">
                   {item.icon}
