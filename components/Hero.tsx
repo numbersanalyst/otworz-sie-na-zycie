@@ -9,6 +9,7 @@ import windowLeftImage from "@/assets/window_left.webp";
 import windowRightImage from "@/assets/window_right.webp";
 import cloudsImage from "@/assets/clouds.webp";
 import jp2 from "@/assets/jp2.png";
+import blurBg from "@/assets/blur-white.webp";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -417,7 +418,17 @@ export const Hero = () => {
           className="w-full flex flex-col items-center pt-8 pb-32 px-4 md:px-0"
         >
           <div className="relative flex flex-col md:flex-row md:items-start items-center gap-3 sm:gap-4 md:gap-16 mx-auto max-w-6xl">
-            <div className="absolute inset-0 -m-4 bg-white/40 blur-xl rounded-full scale-110 -z-10" />
+            <div className="absolute inset-0 -m-4 -z-10 overflow-visible">
+              <Image
+                src={blurBg}
+                alt=""
+                fill
+                quality={50}
+                sizes="(max-width: 768px) 150px, 280px"
+                className="object-fill opacity-65 md:opacity-50 scale-110"
+                loading="lazy"
+              />
+            </div>
 
             <Image
               src={jp2}
