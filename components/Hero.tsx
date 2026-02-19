@@ -236,13 +236,14 @@ export const Hero = () => {
             : Math.min(windowScale + progress * 1.5, 2);
 
           const headerZ = isMobile ? progress * 400 : progress * 300;
-          const visible = isMobile ? progress < 0.5 : true;
+          const visible = progress < 0.5;
 
           gsap.set(heroHeader, {
             scale: visible ? headerScale : 1,
-            opacity: isMobile ? Math.max(0, 1 - progress * 2) : 1,
+            opacity: Math.max(0, 1 - progress * 3),
             z: headerZ,
             force3D: true,
+            visibility: visible ? "visible" : "hidden",
           });
 
           const wingProgress = Math.min(progress / 0.5, 1);
