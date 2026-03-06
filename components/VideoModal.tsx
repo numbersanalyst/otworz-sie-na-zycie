@@ -1,13 +1,14 @@
 "use client";
 
 import { useRef, useLayoutEffect } from "react";
-import { X } from "lucide-react";
+import { X, Settings, Subtitles } from "lucide-react";
 import gsap from "gsap";
 
 interface VideoModalProps {
   videoId: string;
   startSeconds?: number;
   title?: string;
+  captions?: boolean;
   onClose: () => void;
 }
 
@@ -15,6 +16,7 @@ export const VideoModal = ({
   videoId,
   startSeconds = 0,
   title = "Wideo",
+  captions = false,
   onClose,
 }: VideoModalProps) => {
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -68,13 +70,36 @@ export const VideoModal = ({
         </button>
 
         <iframe
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&start=${startSeconds}&rel=0&modestbranding=1&playsinline=1`}
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&start=${startSeconds}&rel=0&modestbranding=1&playsinline=1&cc_load_policy=1&cc_lang_pref=pl&hl=pl`}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           className="w-full h-full"
         />
       </div>
+
+      {captions && (
+        <div className="absolute bottom-0 inset-x-0 h-[80px] md:h-[90px] bg-zinc-950/80 border-t border-zinc-800 flex flex-col justify-center items-center px-4">
+          <p className="text-[10px] md:text-sm font-medium text-zinc-300 mb-1 md:mb-2">
+            Jak włączyć polskie napisy?
+          </p>
+          <div className="flex flex-row items-center justify-center gap-2 md:gap-5 text-[9px] md:text-xs text-zinc-400">
+            <span className="flex items-center gap-1.5 md:gap-2">
+              <Settings className="w-3 h-3 md:w-4 md:h-4 text-zinc-500" />
+              1. Ustawienia
+            </span>
+            <span className="text-zinc-600">→</span>
+            <span className="flex items-center gap-1.5 md:gap-2">
+              <Subtitles className="w-3 h-3 md:w-4 md:h-4 text-zinc-500" />
+              2. Napisy
+            </span>
+            <span className="text-zinc-600">→</span>
+            <span className="flex items-center gap-1.5 md:gap-2 font-medium text-zinc-300">
+              3. Przetłumacz automatycznie (Polski)
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

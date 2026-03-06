@@ -355,6 +355,7 @@ export const Consequences = () => {
             videoId={activeVideo.videoId}
             startSeconds={activeVideo.startSeconds}
             title="Świadectwo"
+            captions={true}
             onClose={closeVideo}
           />
         )}
