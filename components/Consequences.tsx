@@ -7,7 +7,7 @@ import Image, { StaticImageData } from "next/image";
 import thumbnail1 from "@/assets/thumbnail1.jpg";
 import thumbnail2 from "@/assets/thumbnail2.png";
 import thumbnail3 from "@/assets/thumbnail3.jpg";
-import { Play } from "lucide-react";
+import { Play, Subtitles } from "lucide-react";
 import { VideoModal } from "./VideoModal";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -77,6 +77,7 @@ type Testimony = {
   videoUrl: string;
   timestamp?: string;
   thumbnail?: StaticImageData;
+  requiresManualCaptions?: boolean;
 };
 
 const testimonies: Testimony[] = [
@@ -103,6 +104,7 @@ const testimonies: Testimony[] = [
     videoUrl: "https://www.youtube.com/watch?v=X2Z37kuZwpE",
     timestamp: "14:18",
     thumbnail: thumbnail2,
+    requiresManualCaptions: true,
   },
   {
     tag: "Świadectwo",
@@ -143,6 +145,7 @@ export const Consequences = () => {
   const [activeVideo, setActiveVideo] = useState<{
     videoId: string;
     startSeconds: number;
+    requiresManualCaptions?: boolean;
   } | null>(null);
 
   const closeVideo = () => setActiveVideo(null);
@@ -301,13 +304,28 @@ export const Consequences = () => {
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
 
+                  <div className="absolute top-3 left-3 flex gap-2 z-20 pointer-events-none">
+                    <span className="flex items-center gap-1.5 px-2 py-1 bg-zinc-950/80 backdrop-blur-md rounded-md border border-zinc-700/50 text-[10px] font-medium text-zinc-300">
+                      <Subtitles className="w-3 h-3 text-zinc-400" />
+                      Napisy PL
+                    </span>
+                    {item.requiresManualCaptions && (
+                      <span className="px-2 py-1 bg-zinc-950/80 text-zinc-300 backdrop-blur-md rounded-md border border-zinc-700/50 text-[10px] font-medium">
+                        Włącz w odtwarzaczu
+                      </span>
+                    )}
+                  </div>
+
                   <button
                     onClick={() => {
                       const parsed = parseYouTubeUrl(
                         item.videoUrl,
                         item.timestamp,
                       );
-                      setActiveVideo(parsed);
+                      setActiveVideo({
+                        ...parsed,
+                        requiresManualCaptions: item.requiresManualCaptions,
+                      });
                     }}
                     className="absolute inset-0 w-full h-full flex items-center justify-center group/play cursor-pointer"
                     aria-label={`Odtwórz wideo: ${item.title}`}

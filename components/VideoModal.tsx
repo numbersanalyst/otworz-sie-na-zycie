@@ -70,7 +70,10 @@ export const VideoModal = ({
         </button>
 
         <iframe
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&start=${startSeconds}&rel=0&modestbranding=1&playsinline=1&cc_load_policy=1&cc_lang_pref=pl&hl=pl`}
+          src={
+            `https://www.youtube.com/embed/${videoId}?autoplay=1&start=${startSeconds}&rel=0&modestbranding=1&playsinline=1&hl=pl` +
+            (captions ? `&cc_load_policy=1&cc_lang_pref=pl` : "")
+          }
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
